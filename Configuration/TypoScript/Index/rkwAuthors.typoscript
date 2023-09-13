@@ -1,0 +1,233 @@
+plugin.tx_solr {
+
+    # logger
+
+    logging.indexing.queue.rkw_authors = 1
+
+    # queue
+
+    index {
+
+        queue {
+
+            rkw_authors = 1
+
+            rkw_authors {
+
+                additionalPageIds = {$plugin.tx_rkwauthors.persistence.storagePid}
+
+                table = tx_rkwauthors_domain_model_authors
+
+                fields {
+
+                    abstract = function_title
+
+                    description = function_description
+
+                    title = COA
+
+                    title {
+
+                        10 = TEXT
+
+                        10 {
+
+                            field = title_before
+
+                            wrap = |&nbsp;
+
+                        }
+
+                        10.if.isTrue.field = title_before
+
+                        20 = TEXT
+
+                        20 {
+
+                            field = first_name
+
+                            wrap = |&nbsp;
+
+                        }
+
+                        30 = TEXT
+
+                        30 {
+
+                            field = last_name
+
+                        }
+
+                        40 = TEXT
+
+                        40 {
+
+                            field = title_after
+
+                            wrap = ,&nbsp;|
+
+                        }
+
+                        40.if.isTrue.field = title_after
+
+                        # the function_title is shown another way
+
+                        #50 = TEXT
+
+                        #50 {
+
+                        #	field = function_title_short
+
+                        #	wrap = ,&nbsp;|
+
+                        #}
+
+                        #50.if.isTrue.field = function_title_short
+
+                    }
+
+                    boxfootercontent_stringS = function_title_short
+
+                    tstamp = tstamp
+
+                    content = SOLR_CONTENT
+
+                    content {
+
+                        cObject = COA
+
+                        cObject {
+
+                            10 = TEXT
+
+                            10 {
+
+                                field = function_description
+
+                                noTrimWrap = || |
+
+                            }
+
+                        }
+
+                    }
+
+                    image_stringS = FILES
+
+                    image_stringS {
+
+                        references {
+
+                            table = tx_rkwauthors_domain_model_authors
+
+                            uid.data = field:uid
+
+                            fieldName = image_boxes
+
+                        }
+
+                        renderObj = TEXT
+
+                        renderObj {
+
+                            stdWrap.data = file:current:publicUrl
+
+                            stdWrap.wrap = |
+
+                        }
+
+                    }
+
+                    /*
+
+                    # !! there is no active relation to the department-Model. So we can't get the css_class !!
+
+                    cssclass_stringS = CONTENT
+
+                    cssclass_stringS {
+
+                    # not a correct TS. Don't use this
+
+                    references {
+
+                    table = tx_rkwbasics_domain_model_department
+
+                    uid.data = field:uid
+
+                    fieldName = department
+
+                    }
+
+                    renderObj = TEXT
+
+                    renderObj {
+
+                    stdWrap.data = css_class
+
+                    stdWrap.wrap = |
+
+                    }
+
+                    }
+
+                    */
+
+                    # relations
+
+                    department_stringM = SOLR_RELATION
+
+                    department_stringM {
+
+                        # the db field "department" exists, but seems not to be used
+
+                        localField = department
+
+                        # but we can't use "department_name", because the TCA array has no UID-relation to the table tx_rkwbasics_domain_model_department
+
+                        #localField = department_name
+
+                        multiValue = 0
+
+                    }
+
+                    # grouping facet
+
+                    rkwgroups_stringS = TEXT
+
+                    rkwgroups_stringS {
+
+                        value = group_tx_rkwauthors_domain_model_authors
+
+                    }
+
+                    # url
+
+                    url = TEXT
+
+                    url {
+
+                        typolink {
+
+                            parameter = {$plugin.tx_rkwauthors.settings.showPid}
+
+                            additionalParams = &tx_rkwauthors_rkwauthorsdetail[controller]=Authors&tx_rkwauthors_rkwauthorsdetail[action]=show&tx_rkwauthors_rkwauthorsdetail[author]={field:uid}
+
+                            additionalParams.insertData = 1
+
+                            useCacheHash = 1
+
+                            returnLast = url
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

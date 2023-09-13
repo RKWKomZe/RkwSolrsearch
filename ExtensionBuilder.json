@@ -1,0 +1,40 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "Extension for website search. Primarily for TYPO3 SOLR.",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 9.5.0-9.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "9.5.0-9.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "searchmaster",
+        "name": "Searchmaster",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "F\u00e4\u00dfler Web UG",
+                "email": "maximilian@faesslerweb.de",
+                "name": "Maximilian F\u00e4\u00dfler",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "FSL"
+    },
+    "wires": [],
+    "storagePath": "\/var\/www\/rkw-website-composer\/web\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2023-07-04 12:04",
+        "extension_builder_version": "9.10.7",
+        "be_user": " (174)"
+    }
+}

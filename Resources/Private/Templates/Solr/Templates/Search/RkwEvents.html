@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<div class="tx_solr container main">
+    <div id="tx-solr-search-functions">
+        <f:if condition="{resultSet.hasSearched}">
+            <f:if condition="{resultSet.usedSearchRequest.contextTypoScriptConfiguration.searchFaceting}">
+                <f:render partial="Result/Facets" section="Facets" arguments="{_all}" />
+            </f:if>
+        </f:if>
+    </div>
+
+    <section id="section content no-padding-narrow">
+        <div class="row">
+            <div class="col-md-12">
+                <f:if condition="{resultSet.hasSearched}">
+                    <s:widget.resultPaginate resultSet="{resultSet}" configuration="{insertAbove: false}">
+                        <div data-start="{pagination.resultCountStart}" class="results-list list-group">
+                            <div class="tiles-wrapper">
+                                <div class="tiles flex-container flex-container--margin solr-item-container">
+                                    <f:if condition="<f:count>{documents}</f:count>">
+                                        <f:then>
+                                            <f:for each="{documents}" as="document">
+                                                <f:render
+                                                    partial="Result/Document"
+                                                    section="BoxEvents"
+                                                    arguments="{resultSet:resultSet, document:document}"
+                                                />
+                                            </f:for>
+                                        </f:then>
+                                        <f:else>
+                                            <div class="flex-container flex-basis-12 center-main solr-item-container">
+                                                <div class="no-results" role="alert">
+                                                    <p class="no-results__headline">
+                                                        <f:translate key='templates_solr_search_rkwevents.noResults' />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </s:widget.resultPaginate>
+                </f:if>
+            </div>
+        </div>
+
+    </section>
+</div>
+</html>

@@ -1,0 +1,27 @@
+{
+    "name": "fsl/searchmaster",
+    "type": "typo3-cms-extension",
+    "description": "Extension for website search. Primarily for TYPO3 SOLR.",
+    "authors": [
+        {
+            "name": "Maximilian F\u00e4\u00dfler",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "FSL\\Searchmaster\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FSL\\Searchmaster\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "typo3-ter/searchmaster": "self.version"
+    }
+}

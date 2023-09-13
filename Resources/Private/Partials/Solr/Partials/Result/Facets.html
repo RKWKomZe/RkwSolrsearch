@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:section name="Facets">
+	<div id="tx-solr-faceting">
+
+        <f:comment>
+            <s:facet.area.group groupName="main" facets="{resultSet.facets}"></s:facet.area.group>
+        </f:comment>
+
+		<s:facet.area.group groupName="main" facets="{resultSet.facets}">
+			<div class="facet-area-main">
+				<div class="solr-facets-available secondaryContentSection">
+					<div class="facets btn-list">
+
+						<f:for each="{areaFacets}" as="facet">
+                            <f:render partial="Facets/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+						</f:for>
+
+                        <f:render partial="Result/FacetsActive" section="FacetsActive" arguments="{resultSet:resultSet}" />
+
+                        <f:render partial="Search/Form" section="FormSmall" arguments="{search:search, additionalFilters:additionalFilters, pluginNamespace: pluginNamespace, resultSet: resultSet}" />
+
+					</div>
+				</div>
+			</div>
+		</s:facet.area.group>
+	</div>
+
+</f:section>
+
+</html>

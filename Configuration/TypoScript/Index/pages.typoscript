@@ -1,0 +1,100 @@
+plugin.tx_solr {
+    index {
+        queue {
+            pages = 0
+            pages {
+
+                initialization = ApacheSolrForTypo3\Solr\IndexQueue\Initializer\Page
+
+                // allowed page types (doktype) when indexing records from table "pages"
+                allowedPageTypes = 1,4,7
+
+                indexingPriority = 0
+
+                indexer = ApacheSolrForTypo3\Solr\IndexQueue\PageIndexer
+                indexer {
+                    // add options for the indexer here
+
+                    # solves issue: https://github.com/TYPO3-Solr/ext-solr/issues/2290
+                    authorization {
+                        username = **
+                        password = **
+                    }
+                }
+                // Only index standard pages and mount points that are not overlayed.
+                additionalWhereClause = (doktype = 1 OR doktype=4 OR (doktype=7 AND mount_pid_ol=0)) AND no_search = 0
+
+                // exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
+                excludeContentByClass = typo3-search-exclude
+
+                fields {
+                    sortSubTitle_stringS = subtitle
+                }
+
+                /*
+                table = pages
+                # allowed page types (doktype) when indexing records from table "pages"
+                allowedPageTypes = 1
+                # only index standard pages
+                # exclude publications (tx_bmpdf2content_is_import = 0)
+                additionalWhereClause = doktype = 1 AND no_search = 0 AND tx_bmpdf2content_is_import = 0
+                indexingPriority = 0
+                indexer = ApacheSolrForTypo3\Solr\IndexQueue\PageIndexer
+                indexer {
+                    // add options for the indexer here
+                }
+
+                // exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
+                excludeContentByClass = typo3-search-exclude
+
+                fields {
+                    abstract = abstract
+                    sortSubTitle_stringS = subtitle
+                    description = tx_rkwbasics_teaser_text
+                    content = SOLR_CONTENT
+                    content {
+                        cObject = COA
+                        cObject {
+                            10 = TEXT
+                            10 {
+                                field = tx_rkwbasics_teaser_text
+                                noTrimWrap = || |
+                            }
+                        }
+                    }
+
+                    # relations
+                    documenttype_stringM = SOLR_RELATION
+                    documenttype_stringM {
+                        localField = tx_rkwbasics_document_type
+                        multiValue = 0
+
+                    }
+
+                    department_stringM = SOLR_RELATION
+                    department_stringM {
+                        localField = tx_rkwbasics_department
+                        foreignLabelField = name
+                        multiValue = 0
+                    }
+
+                    project_stringM = SOLR_RELATION
+                    project_stringM {
+                        localField = tx_rkwprojects_project_uid
+                        multiValue = 0
+                    }
+
+                    # grouping facet
+
+                    rkwgroups_stringS = TEXT
+                    rkwgroups_stringS {
+                        value = group_pages
+                    }
+                }
+
+                */
+            }
+        }
+    }
+
+}

@@ -1,0 +1,91 @@
+plugin.tx_solr {
+
+    # logger
+    logging.indexing.queue.rkw_tools = 1
+
+    # queue
+    index {
+        queue {
+            rkw_tools = 1
+            rkw_tools {
+                # on dev the storagePid-variable is not filled
+
+                #additionalPageIds = {$plugin.tx_rkwtools_overview.persistence.storagePid}
+                additionalPageIds = 4266
+                table = tx_rkwtools_domain_model_tool
+                fields {
+                    description = description
+                    title = name
+                    tstamp = tstamp
+                    content = SOLR_CONTENT
+                    content {
+                        cObject = COA
+                        cObject {
+                            10 = TEXT
+                            10 {
+                                field = description
+                                noTrimWrap = || |
+                            }
+                        }
+                    }
+
+                    image_stringS = FILES
+                    image_stringS {
+                        references {
+                            table = tx_rkwtools_domain_model_tool
+                            uid.data = field:uid
+                            fieldName = image
+                        }
+
+                        renderObj = TEXT
+                        renderObj {
+                            stdWrap.data = file:current:publicUrl
+                            stdWrap.wrap = |
+                        }
+                    }
+
+                    # relations
+                    category_stringM = SOLR_RELATION
+                    category_stringM {
+                        localField = sys_category
+                        multiValue = 1
+                    }
+
+                    department_stringM = SOLR_RELATION
+                    department_stringM {
+                        localField = department
+                        multiValue = 0
+                    }
+
+                    project_stringM = SOLR_RELATION
+                    project_stringM {
+                        localField = projects
+                        multiValue = 1
+                    }
+
+                    # grouping facet
+                    rkwgroups_stringS = TEXT
+                    rkwgroups_stringS {
+                        value = group_tx_rkwtools_domain_model_tool
+                    }
+
+                    # url
+                    # here we got a finished typolink directly from the db. But the template can't process it correctly,
+                    # we would get a nested a-Tag there (link in link). Because of this we're extracting the url
+                    url = TEXT
+                    url {
+                        stdWrap {
+                            typolink {
+                                parameter {
+                                    field = link
+                                }
+                                returnLast = url
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

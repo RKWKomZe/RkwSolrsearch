@@ -1,0 +1,84 @@
+plugin.tx_solr {
+
+    # logger
+    logging.indexing.queue.pages_publication = 1
+
+    index {
+        queue {
+            pages_publication = 1
+            pages_publication {
+                table = pages
+                # allowed page types (doktype) when indexing records from table "pages"
+                allowedPageTypes = 1
+                # only index standard pages
+                # only publications (tx_bmpdf2content_is_import = 1)
+                additionalWhereClause = doktype = 1 AND no_search = 0 AND tx_bmpdf2content_is_import = 1
+                indexingPriority = 0
+                indexer = ApacheSolrForTypo3\Solr\IndexQueue\PageIndexer
+                indexer {
+                    // add options for the indexer here
+                }
+
+                // exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
+				excludeContentByClass = typo3-search-exclude
+				fields {
+					abstract = abstract
+					sortSubTitle_stringS = subtitle
+					description = tx_rkwbasics_teaser_text
+					content = SOLR_CONTENT
+					content {
+						cObject = COA
+						cObject {
+							10 = TEXT
+							10 {
+								field = tx_rkwbasics_teaser_text
+								noTrimWrap = || |
+							}
+						}
+					}
+
+					image_stringS = FILES
+					image_stringS {
+						references {
+							table = pages
+							uid.data = field:uid
+							fieldName = tx_rkwbasics_teaser_image
+						}
+
+						renderObj = TEXT
+						renderObj {
+							stdWrap.data = file:current:publicUrl
+							stdWrap.wrap = |
+						}
+					}
+
+					# relations
+					documenttype_stringM = SOLR_RELATION
+					documenttype_stringM {
+						localField = tx_rkwbasics_document_type
+						multiValue = 0
+					}
+
+					department_stringM = SOLR_RELATION
+					department_stringM {
+						localField = tx_rkwbasics_department
+						foreignLabelField = name
+						multiValue = 0
+					}
+
+					project_stringM = SOLR_RELATION
+					project_stringM {
+						localField = tx_rkwprojects_project_uid
+						multiValue = 0
+					}
+
+					# grouping facet
+					rkwgroups_stringS = TEXT
+					rkwgroups_stringS {
+						value = group_pages_publication
+					}
+				}
+			}
+		}
+	}
+}

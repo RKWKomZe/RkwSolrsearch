@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+
+<f:if condition="<f:count>{facet.options}</f:count>">
+    <f:then>
+        <f:for each="{facet.options}" as="option" iteration="iteration">
+            <f:if condition="{option.selected}">
+                <f:then>
+                    <a
+                        class="btn btn--primary btn--small facet solr-ajaxified"
+                        href="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
+                    >
+                        {facet.label} ({option.documentCount})
+                    </a>
+                </f:then>
+                <f:else>
+                    <a
+                        class="btn btn--outline btn--small facet solr-ajaxified"
+                        href="{s:uri.facet.addFacetItem(facet: facet, facetItem: option)}"
+                    >
+                        {facet.label} ({option.documentCount})
+                    </a>
+                </f:else>
+            </f:if>
+        </f:for>
+    </f:then>
+    <f:else>
+        <f:if condition="{facet.configuration.showEvenWhenEmpty}">
+            <div class="btn btn--disabled btn--small">
+                {facet.label}
+            </div>
+        </f:if>
+    </f:else>
+</f:if>
+
+
+
+<!--
+    <f:if condition="{facet.options -> f:count()} == 0">
+        TEST HAHAHA
+
+    </f:if>
+-->
+
+</html>
