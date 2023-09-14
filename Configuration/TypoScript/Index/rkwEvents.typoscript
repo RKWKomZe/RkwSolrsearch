@@ -68,20 +68,6 @@ plugin.tx_solr {
 
                 }
 
-                place {
-                    label = Ort
-                    field = placeCity_stringM
-
-                    showEvenWhenEmpty = 1
-
-                    # test
-                    keepAllOptionsOnSelection = 1
-
-                    partialName = Select
-
-                }
-
-
                 # online event yes / no
                 online {
                     label = Online
