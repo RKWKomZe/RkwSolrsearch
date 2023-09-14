@@ -13,15 +13,14 @@
 
 		<s:facet.area.group groupName="main" facets="{resultSet.facets}">
 			<div class="facet-area-main">
-				<div class="solr-facets-available secondaryContentSection">
+				<div class="solr-facets-available">
 					<div class="facets btn-list">
 
 						<f:for each="{areaFacets}" as="facet">
-                            <f:render partial="Facets/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+                            <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
 						</f:for>
 
-                        <f:render partial="Result/FacetsActive" section="FacetsActive" arguments="{resultSet:resultSet}" />
-
+                        <f:render partial="Facets/Reset" section="Reset" arguments="{resultSet:resultSet}" />
 
 					</div>
 				</div>
