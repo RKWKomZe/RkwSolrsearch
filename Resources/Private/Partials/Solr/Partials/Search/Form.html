@@ -74,11 +74,13 @@
                 <input
                     id="search"
                     type="text"
-                    class="single tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control"
+                    class="single tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus"
+                    aria-describedby="search"
+                    placeholder="Suchbegriff ..."
                     name="{pluginNamespace}[q]"
                     value="{q}"
                 />
-                <button class="btn btn--secondary search-field__submit tx-solr-submit" type="submit">
+                <button class="btn btn--primary search-field__submit tx-solr-submit" type="submit">
                     <svg class="icon icon--16" aria-hidden="true">
                         <use xlink:href="#ic-arrow-primary"></use>
                     </svg>
