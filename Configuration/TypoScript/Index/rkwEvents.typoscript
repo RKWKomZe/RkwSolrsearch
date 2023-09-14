@@ -80,14 +80,11 @@ plugin.tx_solr {
                     label = Kostenlos
                     field = freeOfCharge_intS
 
-                    # exclude 0. So only value 1 (=is eligible) can used as facet
+                    # exclude 0. So only value 1 (=is freeOfCharge) can used as facet
                     excludeValues = 0
-
                     showEvenWhenEmpty = 1
-
                     type = bool
-
-                    partialName = Button
+                    partialName = Checkbox
                 }
 
                 # eligible event yes / no
@@ -97,12 +94,9 @@ plugin.tx_solr {
 
                     # exclude 0. So only value 1 (=is eligible) can used as facet
                     excludeValues = 0
-
                     showEvenWhenEmpty = 1
-
                     type = bool
-
-                    partialName = Button
+                    partialName = Checkbox
                 }
             }
         }

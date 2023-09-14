@@ -7,7 +7,7 @@ function SearchController() {
     this.init = function() {
 
         jQuery("body").delegate(
-            "a.solr-ajaxified, select.solr-ajaxified option",
+            "a.solr-ajaxified, select.solr-ajaxified option, .checkbox.solr-ajaxified",
             "click",
             _this.handleClickOnAjaxifiedUri
         );
@@ -49,6 +49,8 @@ function SearchController() {
 
             //uri = URI(action + '?' + fieldName + '=' + term);
             uri = URI(action).addSearch(fieldName, term);
+        } else if (jQuery(clickedLink).is('input[type="checkbox"]')) {
+            uri = URI(jQuery(clickedLink).data("target"));
         } else {
 
             // "a"
@@ -92,6 +94,7 @@ function SearchController() {
             //    _this.scrollToTopOfElement(solrParent, 50);
                 jQuery("body").trigger("tx_solr_updated");
                 //loader.fadeOut().remove();
+                //history.replaceState({}, null, uri.removeQuery("type").href());
 
             }
         );
