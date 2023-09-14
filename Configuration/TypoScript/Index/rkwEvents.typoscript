@@ -3,7 +3,9 @@
 # {$plugin.tx_news.settings.detailPid}
 
 # [page["uid"] == 3701]
+# evtl. Handler hierfür schreiben, um die Condition zu prüfen (Plugin auf Uid im Einsatz?)
 [page["uid"] == 11006]
+
 plugin.tx_solr {
 
     view {
@@ -53,19 +55,24 @@ plugin.tx_solr {
                 # do not show "Content Type" tx_rkwevents_domain_model_event-Option. We only want to show exactly that one type in this list
                 type >
 
-                # online event yes / no
-                department {
-                    label = Schwerpunkte
-                    field = department_stringM
-
+                # documentType select
+                documentType {
+                    label = Veranstaltungsart
+                    field = documentType_stringM
                     showEvenWhenEmpty = 1
-
                     # test
                     keepAllOptionsOnSelection = 1
+                    partialName = SelectInfo
+                }
 
-
+                # category select
+                category {
+                    label = Kategorie
+                    field = category_stringM
+                    showEvenWhenEmpty = 1
+                    # test
+                    keepAllOptionsOnSelection = 1
                     partialName = Select
-
                 }
 
                 # free of charge event yes / no

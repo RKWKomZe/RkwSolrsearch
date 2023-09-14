@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+    xmlns:sm="http://typo3.org/ns/FSL/Searchmaster/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:comment><!-- @toDo: Ohne folgende Anweisung im select-Tag ist die Facette hier quasi tot (es findet kein request statt) --></f:comment>
+<f:comment><!--  onchange="location = this.value;" --></f:comment>
+
+<select class="select-field select-field--longer select-field--info solr-ajaxified">
+    <f:comment><!-- the "please choose" option with facet name. Just always uses a link which comes without any facet specific options --></f:comment>
+    <option selected value="{s:uri.facet.removeFacet(facet: facet)}">
+        {facet.label}
+    </option>
+    <f:if condition="<f:count>{facet.options}</f:count>">
+        <f:then>
+            <f:for each="{facet.options}" as="option" iteration="iteration">
+                <f:comment>
+                    <f:if condition="{iteration.isFirst}">
+                        <option value="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}">
+                            {facet.label}
+                        </option>
+                    </f:if>
+                </f:comment>
+                <f:if condition="{option.selected}">
+                    <f:then>
+                        <option selected value="{sm:uri.facet.addFacetItemUnique(facet: facet, facetItem: option)}">
+                            {option.label} ({option.documentCount})
+                        </option>
+                    </f:then>
+                    <f:else>
+                        <option value="{sm:uri.facet.addFacetItemUnique(facet: facet, facetItem: option)}">
+                            {option.label} ({option.documentCount})
+                        </option>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </f:then>
+        <f:else>
+            <f:if condition="{facet.configuration.showEvenWhenEmpty}">
+                <option value="{option.label}">
+                    {option.label}
+                </option>
+            </f:if>
+        </f:else>
+    </f:if>
+</select>
+
+<f:link.page pageUid="{settings.list.filter.showDocumentTypeLink}" target="_blank" class="btn select-field__info" title="{settings.list.filter.showDocumentTypeInfo}">
+    <svg class="icon icon--32" aria-hidden="true">
+        <use xlink:href="#ic-info" />
+    </svg>
+</f:link.page>
+
+<!--
+    <f:if condition="{facet.options -> f:count()} == 0">
+        TEST HAHAHA
+
+    </f:if>
+-->
+
+</html>
