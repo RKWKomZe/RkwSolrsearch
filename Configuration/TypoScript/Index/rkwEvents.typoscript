@@ -68,21 +68,6 @@ plugin.tx_solr {
 
                 }
 
-                # online event yes / no
-                online {
-                    label = Online
-                    field = onlineEvent_intS
-                    # exclude 0. So only value 1 (=is online event) can used as facet
-                    excludeValues = 0
-
-                    showEvenWhenEmpty = 1
-
-                    type = bool
-
-                    partialName = Button
-
-                }
-
                 # free of charge event yes / no
                 freeOfCharge {
                     label = Kostenlos
