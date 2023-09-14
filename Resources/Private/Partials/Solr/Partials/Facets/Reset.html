@@ -7,7 +7,7 @@
 <f:section name="Reset">
     <f:if condition="{resultSet.facets.used -> f:count()}">
         <f:then>
-            <a href="{s:uri.facet.removeAllFacets()}" class="solr-ajaxified btn btn--secondary">
+            <a href="{s:uri.facet.removeAllFacets()}" class="solr-ajaxified btn btn--link">
                 <f:translate key='partials_solr_result_facetsActive.removeAllFilter' />
                 <i class="glyphicon glyphicon-remove"></i>
             </a>
