@@ -32,8 +32,7 @@ function SearchController() {
        // console.log(clickedLink);
 
         var solrParent = solrContainer.parent();
-
-        //var loader = jQuery("<div class='tx-solr-loader'></div>");
+        var loader = $.parseHTML('<div class="ajax-overlay"><div class="loading-indicator"></div></div>');
 
         var uri = '';
 
@@ -58,7 +57,11 @@ function SearchController() {
         }
 
 
-        //solrParent.append(loader);
+        solrContainer
+          .addClass('is-ajax-target')
+          .append(loader)
+        ;
+
         uri.addQuery("type", _this.ajaxType);
 
         jQuery.get(
@@ -93,6 +96,12 @@ function SearchController() {
 
             //    _this.scrollToTopOfElement(solrParent, 50);
                 jQuery("body").trigger("tx_solr_updated");
+
+                console.log('more is loaded');
+                solrContainer
+                  .find('.ajax-overlay')
+                  .remove()
+                  .removeClass('is-ajax-target');
                 //loader.fadeOut().remove();
                 //history.replaceState({}, null, uri.removeQuery("type").href());
 
