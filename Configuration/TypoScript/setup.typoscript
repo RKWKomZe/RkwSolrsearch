@@ -173,7 +173,6 @@ tx_solr_ajaxPage {
 }
 
 page.includeJSFooterlibs {
-    solr-jquery = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.min.js
     solr-uri = EXT:solr/Resources/Public/JavaScript/JQuery/URI.min.js
     solr-uri-jquery = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.URI.min.js
     solr-ajaxify-searchmaster = EXT:searchmaster/Resources/Public/JavaScript/AjaxResults.js

@@ -16,7 +16,7 @@
                             id="{facet.field}" 
                             class="checkbox solr-ajaxified"
                             checked
-                            data-target="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
+                            data-facet-uri="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
                         >
                         <label for="{facet.field}" class="checkbox-label">{facet.label} ({option.documentCount})</label>
                     </div>
@@ -28,7 +28,7 @@
                             name="{facet.field}" 
                             id="{facet.field}" 
                             class="checkbox solr-ajaxified"
-                            data-target="{s:uri.facet.addFacetItem(facet: facet, facetItem: option)}"
+                            data-facet-uri="{s:uri.facet.addFacetItem(facet: facet, facetItem: option)}"
                         >
                         <label for="{facet.field}" class="checkbox-label">{facet.label} ({option.documentCount})</label>
                     </div>
