@@ -35,22 +35,27 @@
                 <target>ab</target>
             </trans-unit>
 
-
-            <trans-unit id="partials_solr_result_facetsActive.noFilterSelected">
-                <source>No filter selected</source>
-                <target>Keine Filter ausgewählt</target>
-            </trans-unit>
-            <trans-unit id="partials_solr_result_facetsActive.removeAllFilter">
-                <source>Remove all filter</source>
-                <target>Filter entfernen</target>
-            </trans-unit>
-
             <trans-unit id="partials_solr_search_form.searchHeader">
                 <source>What do you search for?</source>
                 <target>Wonach suchen Sie?</target>
             </trans-unit>
+            <trans-unit id="partials_solr_search_form.searchInput.placeholder">
+                <source>Keyword ...</source>
+                <target>Suchbegriff ...</target>
+            </trans-unit>
 
-
+			<trans-unit id="partials_solr_search_facets.useFilter">
+                <source>Narrow search</source>
+                <target>Suche eingrenzen</target>
+            </trans-unit>
+			<trans-unit id="partials_solr_search_facets.noFilterSelected">
+                <source>No filter selected</source>
+                <target>Keine Filter ausgewählt</target>
+            </trans-unit>
+            <trans-unit id="partials_solr_search_facets.removeAllFilter">
+                <source>Remove all filters</source>
+                <target>Alle Filter löschen</target>
+            </trans-unit>
 
 
             <!-- ############################### -->

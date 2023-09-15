@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:section name="Facets">
+	<div id="tx-solr-faceting">
+
+        <div class="accordion accordion-controls accordion-filter center-main flex-basis-12">
+            <div class="accordion__item">
+                <div class="flex center-main">
+                    <button
+                        id="searchfilter"
+                        class="accordion__button accordion-control" 
+                        name="accordion" 
+                        aria-controls="accordion-filter-content" 
+                        aria-expanded="false"
+                    >
+                        <span class="accordion__title">
+                            <span class="accordion__title-icon"></span>
+                            <f:translate key='partials_solr_search_facets.useFilter' />
+                        </span>
+                    </button>
+                    <div 
+                        class="accordion__item-content flex-basis-12" 
+                        aria-hidden="true" 
+                        id="accordion-filter-content" 
+                        role="region" 
+                        aria-labelledby="searchfilter"
+                    >
+                        <div class="accordion__item-inner">
+                            
+                            <s:facet.area.group groupName="main" facets="{resultSet.facets}">
+                                <div class="solr-facets-available">
+                                    <div class="facets btn-list btn-list--center btn-list-mobile">
+                                        <f:for each="{areaFacets}" as="facet">
+                                            <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+                                        </f:for>
+                                    </div>
+                                </div>
+                            </s:facet.area.group>
+
+                            <f:render partial="Facets/Reset" section="Reset" arguments="{resultSet:resultSet}" />
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+</f:section>
+
+</html>

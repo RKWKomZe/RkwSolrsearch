@@ -8,3 +8,11 @@
 .btn--link:focus {
     border-color: transparent;
 }
+
+.accordion-filter .select-field.select-field--info {
+    margin-right: 0;
+}
+
+.accordion-filter .btn.select-field__info {
+    margin-left: 0;
+}

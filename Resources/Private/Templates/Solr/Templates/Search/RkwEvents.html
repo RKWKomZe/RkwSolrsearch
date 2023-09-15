@@ -16,9 +16,10 @@
         
         <f:if condition="{resultSet.hasSearched}">
             <f:if condition="{resultSet.usedSearchRequest.contextTypoScriptConfiguration.searchFaceting}">
-                <f:render partial="Result/Facets" section="Facets" arguments="{_all}" />
+                <f:render partial="Search/Facets" section="Facets" arguments="{_all}" />
             </f:if>
         </f:if>
+        
     </div>
 
     <section id="section content no-padding-narrow">

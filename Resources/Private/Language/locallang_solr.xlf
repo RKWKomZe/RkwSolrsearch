@@ -28,18 +28,22 @@
                 <source>from</source>
             </trans-unit>
 
-
-            <trans-unit id="partials_solr_result_facetsActive.noFilterSelected">
-                <source>No filter selected</source>
-            </trans-unit>
-            <trans-unit id="partials_solr_result_facetsActive.removeAllFilter">
-                <source>Remove all filter</source>
-            </trans-unit>
-
             <trans-unit id="partials_solr_search_form.searchHeader">
                 <source>What do you search for?</source>
             </trans-unit>
+			<trans-unit id="partials_solr_search_form.searchInput.placeholder">
+				<source>Keyword ...</source>
+			</trans-unit>
 
+			<trans-unit id="partials_solr_search_facets.useFilter">
+                <source>Narrow search</source>
+            </trans-unit>
+			<trans-unit id="partials_solr_search_facets.noFilterSelected">
+                <source>No filter selected</source>
+            </trans-unit>
+            <trans-unit id="partials_solr_search_facets.removeAllFilter">
+                <source>Remove all filter</source>
+            </trans-unit>
 
             <!-- ############################### -->
             <!-- EXT:SOLR locallang -->

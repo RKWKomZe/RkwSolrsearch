@@ -4,7 +4,6 @@
     data-namespace-typo3-fluid="true"
 >
 
-
 <f:if condition="<f:count>{facet.options}</f:count>">
     <f:then>
         <f:for each="{facet.options}" as="option" iteration="iteration">
@@ -12,7 +11,7 @@
                 <f:then>
                     <a
                         class="btn btn--primary btn--small facet solr-ajaxified"
-                        href="../../../../../../../../../../index.php"
+                        href="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
                     >
                         {facet.label} ({option.documentCount})
                     </a>
@@ -20,7 +19,7 @@
                 <f:else>
                     <a
                         class="btn btn--outline btn--small facet solr-ajaxified"
-                        href="../../../../../../../../../../index.php"
+                        href="{s:uri.facet.addFacetItem(facet: facet, facetItem: option)}"
                     >
                         {facet.label} ({option.documentCount})
                     </a>

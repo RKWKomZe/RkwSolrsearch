@@ -10,14 +10,10 @@
 
 <select class="select-field select-field--longer solr-ajaxified">
 
-
-
     <f:comment><!-- the "please choose" option with facet name. Just always uses a link which comes without any facet specific options --></f:comment>
     <option selected value="{s:uri.facet.removeFacet(facet: facet)}">
         {facet.label}
     </option>
-
-
 
     <f:if condition="<f:count>{facet.options}</f:count>">
         <f:then>
