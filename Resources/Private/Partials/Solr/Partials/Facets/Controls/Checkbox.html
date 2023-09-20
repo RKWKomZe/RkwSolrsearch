@@ -9,7 +9,7 @@
         <f:for each="{facet.options}" as="option" iteration="iteration">
             <f:if condition="{option.selected}">
                 <f:then>
-                    <div class="form__field facet">
+                    <div class="checkbox-field facet">
                         <input 
                             type="checkbox" 
                             name="{facet.field}" 
@@ -22,7 +22,7 @@
                     </div>
                 </f:then>
                 <f:else>
-                    <div class="form__field facet">
+                    <div class="checkbox-field facet">
                         <input 
                             type="checkbox" 
                             name="{facet.field}" 
@@ -38,7 +38,7 @@
     </f:then>
     <f:else>
         <f:if condition="{facet.configuration.showEvenWhenEmpty}">
-            <div class="form__field facet">
+            <div class="checkbox-field facet">
                 <input
                     type="checkbox"
                     name="{facet.field}"

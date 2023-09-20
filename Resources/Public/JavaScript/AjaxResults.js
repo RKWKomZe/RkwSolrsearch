@@ -4,6 +4,8 @@ function SearchController() {
 
     this.settings = {
         ajaxType: 7383,
+        solrSearchContainerId: '#tx-solr-search-functions',
+        solrSearchContainer: null,
         solrContainerClass: '.tx_solr.container.main',
         solrContainer: null,
         solrContainerParent: null,
@@ -19,10 +21,16 @@ function SearchController() {
     this.init = function () {
 
         jQuery("body").delegate(
-            "a.solr-ajaxified, select.solr-ajaxified option, .checkbox.solr-ajaxified",
+            "a.solr-ajaxified, .checkbox.solr-ajaxified",
             "click",
             _this.handleClickOnAjaxifiedUri
         );
+
+        jQuery("body").delegate(
+            "select.solr-ajaxified",
+            "change",
+            _this.handleClickOnAjaxifiedUri
+        )
 
         jQuery("body").delegate(
             "form.solr-ajaxified",
@@ -60,6 +68,7 @@ function SearchController() {
 
         _this.settings.solrContainer = $el.closest(_this.settings.solrContainerClass);
         _this.settings.solrContainerParent = _this.settings.solrContainer.parent();
+        _this.settings.solrSearchContainer = $el.closest(_this.settings.solrSearchContainerId);
 
         uri = _this.buildUri($el);
         uri.addQuery("type", _this.settings.ajaxType);
@@ -106,7 +115,7 @@ function SearchController() {
 
       let uri = '';
 
-      if ($el.is("option")) {
+      if ($el.is("select")) {
 
         uri = URI($el.val());
 
@@ -136,7 +145,7 @@ function SearchController() {
 
         const html = jQuery.parseHTML('<div class="' + _this.settings.loadingIndicatorHtmlClass + '">' + _this.settings.loadingIndicatorHtml + '</div>');
 
-        _this.settings.solrContainer
+        _this.settings.solrSearchContainer
             .addClass(_this.settings.loadingIndicatorTargetClass)
             .blur()
             .append(html)
@@ -146,12 +155,12 @@ function SearchController() {
 
     this.removeLoadingIndicator = function () {
 
-      _this.settings.solrContainer
+      _this.settings.solrSearchContainer
         .find('.' + _this.settings.loadingIndicatorHtmlClass)
         .blur()
         .remove();
 
-      _this.settings.solrContainer
+      _this.settings.solrSearchContainer
         .removeClass(_this.settings.loadingIndicatorTargetClass);
 
     };

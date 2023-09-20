@@ -43,6 +43,10 @@
                 <source>Keyword ...</source>
                 <target>Suchbegriff ...</target>
             </trans-unit>
+			<trans-unit id="partials_solr_search_form.searchInput.startSearch">
+				<source>Start search</source>
+				<target>Suche starten</target>
+			</trans-unit>
 
 			<trans-unit id="partials_solr_search_facets.useFilter">
                 <source>Narrow search</source>
