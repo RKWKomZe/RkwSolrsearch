@@ -63,6 +63,8 @@ plugin.tx_solr {
                     # test
                     keepAllOptionsOnSelection = 1
                     partialName = SelectInfo
+                    infoLabel = Infolabel
+                    infoUid = 5429
                 }
 
                 # category select
