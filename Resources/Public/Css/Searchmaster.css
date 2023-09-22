@@ -42,6 +42,10 @@
     }
 }
 
+.searchform .search-field__submit {
+    height: 48px;
+}
+
 .searchform .search-field__submit svg {
     display: none;
 }
