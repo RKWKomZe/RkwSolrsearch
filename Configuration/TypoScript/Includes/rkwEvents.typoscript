@@ -84,18 +84,18 @@ plugin.tx_solr {
                     field = startDate_dateS
                     type = queryGroup
                     queryGroup {
-                        month0.query = [NOW/MONTH TO NOW/MONTH+1MONTHS]
-                        month1.query = [NOW/MONTH+1MONTHS TO NOW/MONTH+2MONTHS]
-                        month2.query = [NOW/MONTH+2MONTHS TO NOW/MONTH+3MONTHS]
-                        month3.query = [NOW/MONTH+3MONTHS TO NOW/MONTH+4MONTHS]
-                        month4.query = [NOW/MONTH+4MONTHS TO NOW/MONTH+5MONTHS]
-                        month5.query = [NOW/MONTH+5MONTHS TO NOW/MONTH+6MONTHS]
-                        month6.query = [NOW/MONTH+6MONTHS TO NOW/MONTH+7MONTHS]
-                        month7.query = [NOW/MONTH+7MONTHS TO NOW/MONTH+8MONTHS]
-                        month8.query = [NOW/MONTH+8MONTHS TO NOW/MONTH+9MONTHS]
-                        month9.query = [NOW/MONTH+9MONTHS TO NOW/MONTH+10MONTHS]
-                        month10.query = [NOW/MONTH+10MONTHS TO NOW/MONTH+11MONTHS]
-                        month11.query = [NOW/MONTH+11MONTHS TO NOW/MONTH+12MONTHS]
+                        0.query = [NOW/MONTH TO NOW/MONTH+1MONTHS]
+                        1.query = [NOW/MONTH+1MONTHS TO NOW/MONTH+2MONTHS]
+                        2.query = [NOW/MONTH+2MONTHS TO NOW/MONTH+3MONTHS]
+                        3.query = [NOW/MONTH+3MONTHS TO NOW/MONTH+4MONTHS]
+                        4.query = [NOW/MONTH+4MONTHS TO NOW/MONTH+5MONTHS]
+                        5.query = [NOW/MONTH+5MONTHS TO NOW/MONTH+6MONTHS]
+                        6.query = [NOW/MONTH+6MONTHS TO NOW/MONTH+7MONTHS]
+                        7.query = [NOW/MONTH+7MONTHS TO NOW/MONTH+8MONTHS]
+                        8.query = [NOW/MONTH+8MONTHS TO NOW/MONTH+9MONTHS]
+                        9.query = [NOW/MONTH+9MONTHS TO NOW/MONTH+10MONTHS]
+                        10.query = [NOW/MONTH+10MONTHS TO NOW/MONTH+11MONTHS]
+                        11.query = [NOW/MONTH+11MONTHS TO NOW/MONTH+12MONTHS]
                     }
                     renderingInstruction = CASE
                     renderingInstruction {
@@ -104,30 +104,30 @@ plugin.tx_solr {
                         default = TEXT
                         default.field = optionValue
 
-                        month0 = TEXT
-                        month0.value = Aktueller Monat (Monat 0)
-                        month1 = TEXT
-                        month1.value = Monat +1
-                        month2 = TEXT
-                        month2.value = Monat +2
-                        month3 = TEXT
-                        month3.value = Monat +3
-                        month4 = TEXT
-                        month4.value = Monat +4
-                        month5 = TEXT
-                        month5.value = Monat +5
-                        month6 = TEXT
-                        month6.value = Monat +6
-                        month7 = TEXT
-                        month7.value = Monat +7
-                        month8 = TEXT
-                        month8.value = Monat +8
-                        month9 = TEXT
-                        month9.value = Monat +9
-                        month10 = TEXT
-                        month10.value = Monat +10
-                        month11 = TEXT
-                        month11.value = Monat +11
+                        0 = TEXT
+                        0.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        1 = TEXT
+                        1.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        2 = TEXT
+                        2.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        3 = TEXT
+                        3.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        4 = TEXT
+                        4.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        5 = TEXT
+                        5.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        6 = TEXT
+                        6.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        7 = TEXT
+                        7.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        8 = TEXT
+                        8.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        9 = TEXT
+                        9.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        10 = TEXT
+                        10.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        11 = TEXT
+                        11.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
                     }
                     showEvenWhenEmpty = 1
                     # test

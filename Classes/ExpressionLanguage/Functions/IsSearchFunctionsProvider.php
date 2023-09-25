@@ -14,14 +14,17 @@ namespace FSL\Searchmaster\ExpressionLanguage\Functions;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Madj2k\CoreExtended\Utility\GeneralUtility;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * IsSearchFunctionsProvider
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Christian Dilger
+ * @copyright RKW Kompetenzzentrum
  * @package Searchmaster
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */

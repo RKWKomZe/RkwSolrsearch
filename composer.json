@@ -6,11 +6,18 @@
         {
             "name": "Maximilian F\u00e4\u00dfler",
             "role": "Developer"
-        }
+        },
+		{
+			"name": "Christian Dilger",
+			"email": "c.dilger@addorange.de",
+			"role": "Developer"
+		}
     ],
     "require": {
-        "typo3/cms-core": "^9.5"
-    },
+		"php": ">=7.4",
+        "typo3/cms-core": "~9.5.0",
+		"rkw/rkw-events": "~9.5.0"
+	},
     "autoload": {
         "psr-4": {
             "FSL\\Searchmaster\\": "Classes"
