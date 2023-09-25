@@ -178,11 +178,7 @@ page.includeJSFooterlibs {
     solr-ajaxify-searchmaster = EXT:searchmaster/Resources/Public/JavaScript/AjaxResults.js
 }
 
-
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:searchmaster/Configuration/TypoScript/Index/pages.typoscript">
-
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:searchmaster/Configuration/TypoScript/Index/rkwEvents.typoscript">
-
-
-
-#<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pascoe/Configuration/TypoScript/Plugin/Solr/Suggest/setup.typoscript">
+#===============================================================
+# Includes
+#===============================================================
+<INCLUDE_TYPOSCRIPT: source="DIR:./Includes" extensions="typoscript">
