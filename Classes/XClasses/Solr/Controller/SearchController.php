@@ -23,14 +23,17 @@ use ApacheSolrForTypo3\Solr\Util;
  * @author Frans Saris <frans@beech.it>
  * @author Timo Hund <timo.hund@dkd.de>
  * @author Christian Dilger <c.dilger@addorange.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package Searchmaster
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SearchController extends \ApacheSolrForTypo3\Solr\Controller\SearchController
 {
 
     /**
-     * Results
+     * @return void
      */
-    public function resultsAction()
+    public function resultsAction(): void
     {
         try {
             $arguments = (array)$this->request->getArguments();

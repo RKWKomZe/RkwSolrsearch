@@ -16,7 +16,6 @@ namespace FSL\Searchmaster\UserFunctions;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Class SolrIndexer
@@ -38,9 +37,9 @@ class SolrIndexer
      *
      * @param $content
      * @param $conf
-     * @return mixed
+     * @return string
      */
-    public function getCategoryDisplayed($content, $conf)
+    public function getCategoryDisplayed($content, $conf): string
     {
         $record = $this->cObj->data;
 
@@ -65,8 +64,8 @@ class SolrIndexer
             }
         }
 
-        // return nothing, to avoid creating non-existing entries / facets
-        return null;
+        // return empty string to avoid creating non-existing entries / facets
+        return '';
     }
 
 }

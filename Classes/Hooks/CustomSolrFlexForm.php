@@ -15,10 +15,10 @@ namespace FSL\Searchmaster\Hooks;
  */
 
 /**
- * CustomSolrFlexForm
+ * Class CustomSolrFlexForm
  *
  * @author Christian Dilger <c.dilger@addorange.de>
- * @copyright Christian Dilger
+ * @copyright Rkw Kompetenzzentrum
  * @package Searchmaster
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */

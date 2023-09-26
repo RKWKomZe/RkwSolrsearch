@@ -17,9 +17,6 @@ namespace FSL\Searchmaster\ViewHelpers;
 /**
  * Class InArrayViewHelper
  *
- * @author Carlos Meyer <cm@davitec.de>
- * @author Maximilian Fäßler <maximilian@faesslerweb.de>
- * @author Steffen Kroggel <developer@steffenkroggel.de>
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
  * @package Searchmaster
