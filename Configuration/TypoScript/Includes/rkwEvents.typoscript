@@ -2,11 +2,6 @@
 
 # {$plugin.tx_news.settings.detailPid}
 
-# [page["uid"] == 3701]
-# [page["uid"] == 11006]
-# @todo: Warum ist das überhaupt eingeschränkt?
-[isSearch('form')]
-
 plugin.tx_solr {
 
     view {
@@ -163,8 +158,6 @@ plugin.tx_solr {
         }
     }
 }
-[end]
-
 
 plugin.tx_solr {
 
