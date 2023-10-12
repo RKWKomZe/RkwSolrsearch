@@ -34,7 +34,7 @@
                             <div class="solr-facets-available facets btn-list btn-list--center">
                                 <f:for each="{areaFacets}" as="facet">
                                     <f:if condition="<searchmaster:inArray needle='{facet.name}' haystack='{settings.useFacets}' />">
-                                    <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+                                        <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
                                     </f:if>
                                 </f:for>
                             </div>

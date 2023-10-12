@@ -32,7 +32,7 @@ class SolrFacets
     public $cObj;
 
     /**
-     * Returns translated month to facet selection field
+     * Returns translated month and year
      *
      * @return string
      */

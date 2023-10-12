@@ -91,6 +91,13 @@ plugin.tx_solr {
                         9.query = [NOW/MONTH+9MONTHS TO NOW/MONTH+10MONTHS]
                         10.query = [NOW/MONTH+10MONTHS TO NOW/MONTH+11MONTHS]
                         11.query = [NOW/MONTH+11MONTHS TO NOW/MONTH+12MONTHS]
+                        12.query = [NOW/MONTH+12MONTHS TO NOW/MONTH+13MONTHS]
+                        13.query = [NOW/MONTH+13MONTHS TO NOW/MONTH+14MONTHS]
+                        14.query = [NOW/MONTH+14MONTHS TO NOW/MONTH+15MONTHS]
+                        15.query = [NOW/MONTH+15MONTHS TO NOW/MONTH+16MONTHS]
+                        16.query = [NOW/MONTH+16MONTHS TO NOW/MONTH+17MONTHS]
+                        17.query = [NOW/MONTH+17MONTHS TO NOW/MONTH+18MONTHS]
+                        18.query = [NOW/MONTH+18MONTHS TO NOW/MONTH+19MONTHS]
                     }
                     renderingInstruction = CASE
                     renderingInstruction {
@@ -123,6 +130,20 @@ plugin.tx_solr {
                         10.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
                         11 = TEXT
                         11.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        12 = TEXT
+                        12.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        13 = TEXT
+                        13.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        14 = TEXT
+                        14.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        15 = TEXT
+                        15.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        16 = TEXT
+                        16.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        17 = TEXT
+                        17.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        18 = TEXT
+                        18.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
                     }
                     showEvenWhenEmpty = 1
                     # test
@@ -179,8 +200,9 @@ plugin.tx_solr {
                 # re-index on title change
                 // @toDo: https://solr.apache.org/guide/8_0/reindexing.html
 
-
-                #recursiveUpdateFields = title, start, end
+                //  set fields to trigger an update on index queueworker via scheduler, if changed
+                //  see https://docs.typo3.org/p/apache-solr-for-typo3/solr/main/en-us/Configuration/Reference/TxSolrIndex.html?highlight=recursiveupdatefield#queue-indexconfig-recursiveupdatefields
+                recursiveUpdateFields = title, start, end
 
                 // @toDo: Checken, ob "additionalPageIds" mit "storagePid" ausreicht!
 
