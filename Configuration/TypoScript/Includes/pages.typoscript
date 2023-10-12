@@ -36,8 +36,8 @@ plugin.tx_solr {
                 # allowed page types (doktype) when indexing records from table "pages"
                 allowedPageTypes = 1
                 # only index standard pages
-                # exclude publications (tx_bmpdf2content_is_import = 0)
-                additionalWhereClause = doktype = 1 AND no_search = 0 AND tx_bmpdf2content_is_import = 0
+                # exclude publications (tx_rkwpdf2content_is_import = 0)
+                additionalWhereClause = doktype = 1 AND no_search = 0 AND tx_rkwpdf2content_is_import = 0
                 indexingPriority = 0
                 indexer = ApacheSolrForTypo3\Solr\IndexQueue\PageIndexer
                 indexer {
