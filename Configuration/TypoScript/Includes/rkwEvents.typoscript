@@ -216,6 +216,8 @@ plugin.tx_solr {
 
 
                 additionalPageIds = {$plugin.tx_rkwevents.persistence.storagePid}
+                //  exclude events in "unternehmensnachfolge"
+                additionalWhereClause = pid NOT IN(8124)
                 table = tx_rkwevents_domain_model_event
 
                 fields {
