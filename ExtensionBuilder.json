@@ -15,8 +15,8 @@
             "targetVersion": "9.5.0-9.5.99",
             "version": "1.0.0"
         },
-        "extensionKey": "searchmaster",
-        "name": "Searchmaster",
+        "extensionKey": "rkw_solrsearch",
+        "name": "RkwSolrsearch",
         "originalExtensionKey": "",
         "originalVendorName": "",
         "persons": [

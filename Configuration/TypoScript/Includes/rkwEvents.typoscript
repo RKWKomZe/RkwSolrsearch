@@ -1,9 +1,3 @@
-
-
-# {$plugin.tx_news.settings.detailPid}
-
-# [page["uid"] == 3701]
-[page["uid"] == 11006]
 plugin.tx_solr {
 
     view {
@@ -53,48 +47,104 @@ plugin.tx_solr {
                 # do not show "Content Type" tx_rkwevents_domain_model_event-Option. We only want to show exactly that one type in this list
                 type >
 
-                # online event yes / no
-                department {
-                    label = Schwerpunkte
-                    field = department_stringM
-
+                # documentType select
+                documentType {
+                    label = Veranstaltungsart
+                    field = documentType_stringM
                     showEvenWhenEmpty = 1
-
                     # test
                     keepAllOptionsOnSelection = 1
-
-
                     partialName = Select
-
+                    # infoLabel = Infolabel
+                    # infoUid = 5429
                 }
 
-                place {
-                    label = Ort
-                    field = placeCity_stringM
-
+                # category select
+                category {
+                    label = Kategorie
+                    field = category_stringM
                     showEvenWhenEmpty = 1
-
                     # test
                     keepAllOptionsOnSelection = 1
-
                     partialName = Select
-
                 }
 
+                # startDate in upcoming month(s)
+                month {
+                    label = Monat
+                    field = startDate_dateS
+                    type = queryGroup
+                    queryGroup {
+                        0.query = [NOW/MONTH TO NOW/MONTH+1MONTHS]
+                        1.query = [NOW/MONTH+1MONTHS TO NOW/MONTH+2MONTHS]
+                        2.query = [NOW/MONTH+2MONTHS TO NOW/MONTH+3MONTHS]
+                        3.query = [NOW/MONTH+3MONTHS TO NOW/MONTH+4MONTHS]
+                        4.query = [NOW/MONTH+4MONTHS TO NOW/MONTH+5MONTHS]
+                        5.query = [NOW/MONTH+5MONTHS TO NOW/MONTH+6MONTHS]
+                        6.query = [NOW/MONTH+6MONTHS TO NOW/MONTH+7MONTHS]
+                        7.query = [NOW/MONTH+7MONTHS TO NOW/MONTH+8MONTHS]
+                        8.query = [NOW/MONTH+8MONTHS TO NOW/MONTH+9MONTHS]
+                        9.query = [NOW/MONTH+9MONTHS TO NOW/MONTH+10MONTHS]
+                        10.query = [NOW/MONTH+10MONTHS TO NOW/MONTH+11MONTHS]
+                        11.query = [NOW/MONTH+11MONTHS TO NOW/MONTH+12MONTHS]
+                        12.query = [NOW/MONTH+12MONTHS TO NOW/MONTH+13MONTHS]
+                        13.query = [NOW/MONTH+13MONTHS TO NOW/MONTH+14MONTHS]
+                        14.query = [NOW/MONTH+14MONTHS TO NOW/MONTH+15MONTHS]
+                        15.query = [NOW/MONTH+15MONTHS TO NOW/MONTH+16MONTHS]
+                        16.query = [NOW/MONTH+16MONTHS TO NOW/MONTH+17MONTHS]
+                        17.query = [NOW/MONTH+17MONTHS TO NOW/MONTH+18MONTHS]
+                        18.query = [NOW/MONTH+18MONTHS TO NOW/MONTH+19MONTHS]
+                    }
+                    renderingInstruction = CASE
+                    renderingInstruction {
+                        key.field = optionValue
 
-                # online event yes / no
-                online {
-                    label = Online
-                    field = onlineEvent_intS
-                    # exclude 0. So only value 1 (=is online event) can used as facet
-                    excludeValues = 0
+                        default = TEXT
+                        default.field = optionValue
 
+                        0 = TEXT
+                        0.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        1 = TEXT
+                        1.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        2 = TEXT
+                        2.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        3 = TEXT
+                        3.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        4 = TEXT
+                        4.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        5 = TEXT
+                        5.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        6 = TEXT
+                        6.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        7 = TEXT
+                        7.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        8 = TEXT
+                        8.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        9 = TEXT
+                        9.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        10 = TEXT
+                        10.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        11 = TEXT
+                        11.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        12 = TEXT
+                        12.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        13 = TEXT
+                        13.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        14 = TEXT
+                        14.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        15 = TEXT
+                        15.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        16 = TEXT
+                        16.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        17 = TEXT
+                        17.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                        18 = TEXT
+                        18.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+                    }
                     showEvenWhenEmpty = 1
-
-                    type = bool
-
-                    partialName = Button
-
+                    # test
+                    keepAllOptionsOnSelection = 1
+                    partialName = Select
                 }
 
                 # free of charge event yes / no
@@ -102,14 +152,11 @@ plugin.tx_solr {
                     label = Kostenlos
                     field = freeOfCharge_intS
 
-                    # exclude 0. So only value 1 (=is eligible) can used as facet
+                    # exclude 0. So only value 1 (=is freeOfCharge) can used as facet
                     excludeValues = 0
-
                     showEvenWhenEmpty = 1
-
                     type = bool
-
-                    partialName = Button
+                    partialName = Checkbox
                 }
 
                 # eligible event yes / no
@@ -119,19 +166,15 @@ plugin.tx_solr {
 
                     # exclude 0. So only value 1 (=is eligible) can used as facet
                     excludeValues = 0
-
                     showEvenWhenEmpty = 1
-
                     type = bool
-
-                    partialName = Button
+                    partialName = Checkbox
                 }
+
             }
         }
     }
 }
-[end]
-
 
 plugin.tx_solr {
 
@@ -153,8 +196,9 @@ plugin.tx_solr {
                 # re-index on title change
                 // @toDo: https://solr.apache.org/guide/8_0/reindexing.html
 
-
-                #recursiveUpdateFields = title, start, end
+                //  set fields to trigger an update on index queueworker via scheduler, if changed
+                //  see https://docs.typo3.org/p/apache-solr-for-typo3/solr/main/en-us/Configuration/Reference/TxSolrIndex.html?highlight=recursiveupdatefield#queue-indexconfig-recursiveupdatefields
+                recursiveUpdateFields = title, start, end
 
                 // @toDo: Checken, ob "additionalPageIds" mit "storagePid" ausreicht!
 
@@ -172,6 +216,8 @@ plugin.tx_solr {
 
 
                 additionalPageIds = {$plugin.tx_rkwevents.persistence.storagePid}
+                //  exclude events in "unternehmensnachfolge"
+                additionalWhereClause = pid NOT IN(8124)
                 table = tx_rkwevents_domain_model_event
 
                 fields {
@@ -329,7 +375,7 @@ plugin.tx_solr {
                         cObject {
                             15 = USER
                             15 {
-                                userFunc = FSL\Searchmaster\UserFunctions\SolrIndexer->getCategoryDisplayed
+                                userFunc = RKW\RkwSolrsearch\UserFunctions\SolrIndexer->getCategoryDisplayed
                             }
                         }
                     }

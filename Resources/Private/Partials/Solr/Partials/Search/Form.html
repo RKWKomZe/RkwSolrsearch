@@ -36,7 +36,6 @@
                     />
                     <span class="input-group-btn">
 					<button class="btn btn--primary search-field__submit tx-solr-submit" type="submit">
-						<span class=" glyphicon glyphicon-search"></span>
 						<span>
 							<s:translate key="submit">Search</s:translate>
 						</span>
@@ -55,7 +54,7 @@
 
     <s:searchForm
         id="tx-solr-search-form-pi-results search"
-        class="single solr-ajaxified"
+        class="searchform flex-container center-main single solr-ajaxified "
         additionalFilters="{additionalFilters}"
         suggestHeader="{s:translate(key:'suggest_header',default:'Top Results')}"
     >
@@ -74,14 +73,19 @@
                 <input
                     id="search"
                     type="text"
-                    class="single tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control"
+                    class="single tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus"
+                    aria-describedby="search"
+                    placeholder="{f:translate(key:'partials_solr_search_form.searchInput.placeholder')}"
                     name="{pluginNamespace}[q]"
                     value="{q}"
                 />
-                <button class="btn btn--secondary search-field__submit tx-solr-submit" type="submit">
+                <button class="btn btn--primary search-field__submit tx-solr-submit" type="submit">
                     <svg class="icon icon--16" aria-hidden="true">
                         <use xlink:href="#ic-arrow-primary"></use>
                     </svg>
+                    <span>
+                        <f:translate key="partials_solr_search_form.searchInput.startSearch"/>
+                    </span>
                 </button>
             </div>
 

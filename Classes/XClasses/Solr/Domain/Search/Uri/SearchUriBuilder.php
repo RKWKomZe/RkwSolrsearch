@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\XClasses\Solr\Domain\Search\Uri;
+namespace RKW\RkwSolrsearch\XClasses\Solr\Domain\Search\Uri;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -26,6 +26,9 @@ use ApacheSolrForTypo3\Solr\Domain\Search\SearchRequest;
  * arguments to build the url for a search sub request.
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
+ * @copyright RKW Kompetenzzentrum
+ * @package RKW_RkwSolrsearch
+ * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SearchUriBuilder extends \ApacheSolrForTypo3\Solr\Domain\Search\Uri\SearchUriBuilder
 {
@@ -36,17 +39,12 @@ class SearchUriBuilder extends \ApacheSolrForTypo3\Solr\Domain\Search\Uri\Search
      * @param $facetValue
      * @return string
      */
-    public function getAddUniqueFacetValueUri(SearchRequest $previousSearchRequest, $facetName, $facetValue)
+    public function getAddUniqueFacetValueUri(SearchRequest $previousSearchRequest, $facetName, $facetValue): string
     {
         $persistentAndFacetArguments = $previousSearchRequest
             ->getCopyForSubRequest()
             ->removeAllGroupItemPages()
-
-            // START edit
-            // Remove all items of given facet before adding the new one
             ->removeAllFacetValuesByName($facetName)
-            // END edit
-
             ->addFacetValue($facetName, $facetValue)
             ->getAsArray();
 

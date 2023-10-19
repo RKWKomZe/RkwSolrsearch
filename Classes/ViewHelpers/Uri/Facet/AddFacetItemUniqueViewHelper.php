@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\ViewHelpers\Uri\Facet;
+namespace RKW\RkwSolrsearch\ViewHelpers\Uri\Facet;
 
 /*
  * This file is part of the TYPO3 CMS project.

@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:if condition="<f:count>{facet.options}</f:count>">
+    <f:then>
+        <f:for each="{facet.options}" as="option" iteration="iteration">
+            <f:if condition="{option.selected}">
+                <f:then>
+                    <div class="checkbox-field facet">
+                        <input 
+                            type="checkbox" 
+                            name="{facet.field}" 
+                            id="{facet.field}" 
+                            class="checkbox solr-ajaxified"
+                            checked
+                            data-facet-uri="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
+                        >
+                        <label for="{facet.field}" class="checkbox-label">{facet.label} ({option.documentCount})</label>
+                    </div>
+                </f:then>
+                <f:else>
+                    <div class="checkbox-field facet">
+                        <input 
+                            type="checkbox" 
+                            name="{facet.field}" 
+                            id="{facet.field}" 
+                            class="checkbox solr-ajaxified"
+                            data-facet-uri="{s:uri.facet.addFacetItem(facet: facet, facetItem: option)}"
+                        >
+                        <label for="{facet.field}" class="checkbox-label">{facet.label} ({option.documentCount})</label>
+                    </div>
+                </f:else>
+            </f:if>
+        </f:for>
+    </f:then>
+    <f:else>
+        <f:if condition="{facet.configuration.showEvenWhenEmpty}">
+            <div class="checkbox-field facet">
+                <input
+                    type="checkbox"
+                    name="{facet.field}"
+                    id="{facet.field}"
+                    class="checkbox solr-ajaxified"
+                    disabled
+                >
+                <label for="{facet.field}" class="checkbox-label checkbox-label--disabled">{facet.label} (0)</label>
+            </div>
+        </f:if>
+    </f:else>
+</f:if>
+
+</html>
