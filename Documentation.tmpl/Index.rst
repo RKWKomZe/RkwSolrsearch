@@ -9,7 +9,7 @@
 .. _start:
 
 =============================================================
-Searchmaster
+RkwSolrsearch
 =============================================================
 
 :Version:
@@ -38,7 +38,7 @@ a GNU/GPL CMS/Framework available from `typo3.org <https://typo3.org/>`_ .
 
 **Community Documentation**
 
-This documentation is community documentation for the TYPO3 extension Searchmaster
+This documentation is community documentation for the TYPO3 extension RkwSolrsearch
 
 It is maintained as part of this third party extension.
 
@@ -47,7 +47,7 @@ If you find an error or something is missing, please:
 
 **Extension Manual**
 
-This documentation is for the TYPO3 extension searchmaster.
+This documentation is for the TYPO3 extension rkw_solrsearch.
 
 **For Contributors**
 

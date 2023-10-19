@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\XClasses\Solr\Controller;
+namespace RKW\RkwSolrsearch\XClasses\Solr\Controller;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -24,7 +24,7 @@ use ApacheSolrForTypo3\Solr\Util;
  * @author Timo Hund <timo.hund@dkd.de>
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
- * @package Searchmaster
+ * @package RKW_RkwSolrsearch
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SearchController extends \ApacheSolrForTypo3\Solr\Controller\SearchController

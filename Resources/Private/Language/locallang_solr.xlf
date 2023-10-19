@@ -3,7 +3,7 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2023-07-11T10:36:54Z">
 		<body>
 
-            <trans-unit id="searchmaster.results">
+            <trans-unit id="rkw_solrsearch.results">
                 <source>Results</source>
             </trans-unit>
 

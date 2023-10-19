@@ -103,43 +103,43 @@ plugin.tx_solr {
                         default.field = optionValue
 
                         0 = TEXT
-                        0.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        0.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         1 = TEXT
-                        1.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        1.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         2 = TEXT
-                        2.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        2.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         3 = TEXT
-                        3.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        3.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         4 = TEXT
-                        4.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        4.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         5 = TEXT
-                        5.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        5.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         6 = TEXT
-                        6.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        6.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         7 = TEXT
-                        7.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        7.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         8 = TEXT
-                        8.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        8.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         9 = TEXT
-                        9.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        9.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         10 = TEXT
-                        10.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        10.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         11 = TEXT
-                        11.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        11.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         12 = TEXT
-                        12.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        12.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         13 = TEXT
-                        13.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        13.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         14 = TEXT
-                        14.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        14.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         15 = TEXT
-                        15.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        15.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         16 = TEXT
-                        16.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        16.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         17 = TEXT
-                        17.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        17.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                         18 = TEXT
-                        18.value.postUserFunc = FSL\Searchmaster\UserFunctions\SolrFacets->getMonthName
+                        18.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
                     }
                     showEvenWhenEmpty = 1
                     # test
@@ -375,7 +375,7 @@ plugin.tx_solr {
                         cObject {
                             15 = USER
                             15 {
-                                userFunc = FSL\Searchmaster\UserFunctions\SolrIndexer->getCategoryDisplayed
+                                userFunc = RKW\RkwSolrsearch\UserFunctions\SolrIndexer->getCategoryDisplayed
                             }
                         }
                     }

@@ -1,5 +1,5 @@
 {
-    "name": "fsl/searchmaster",
+    "name": "rkw/rkw-solrsearch",
     "type": "typo3-cms-extension",
     "description": "Extension for website search. Primarily for TYPO3 SOLR.",
     "authors": [
@@ -7,11 +7,11 @@
             "name": "Maximilian F\u00e4\u00dfler",
             "role": "Developer"
         },
-		{
-			"name": "Christian Dilger",
-			"email": "c.dilger@addorange.de",
-			"role": "Developer"
-		}
+        {
+            "name": "Christian Dilger",
+            "email": "c.dilger@addorange.de",
+            "role": "Developer"
+        }
     ],
     "require": {
       "php": ">=7.4",
@@ -21,15 +21,17 @@
     },
     "autoload": {
         "psr-4": {
-            "FSL\\Searchmaster\\": "Classes"
+            "RKW\\RkwSolrsearch\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "FSL\\Searchmaster\\Tests\\": "Tests"
+            "RKW\\RkwSolrsearch\\Tests\\": "Tests"
         }
     },
-    "replace": {
-        "typo3-ter/searchmaster": "self.version"
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "rkw_solrsearch"
+        }
     }
 }

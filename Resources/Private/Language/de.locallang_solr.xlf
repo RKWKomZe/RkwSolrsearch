@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 
-			<trans-unit id="searchmaster.results">
+			<trans-unit id="rkw_solrsearch.results">
 				<source>Results</source>
 				<target>Ergebnisse</target>
 			</trans-unit>

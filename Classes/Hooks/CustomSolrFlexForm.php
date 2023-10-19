@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\Hooks;
+namespace RKW\RkwSolrsearch\Hooks;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,7 +19,7 @@ namespace FSL\Searchmaster\Hooks;
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright Rkw Kompetenzzentrum
- * @package Searchmaster
+ * @package RKW_RkwSolrsearch
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class CustomSolrFlexForm
@@ -27,7 +27,7 @@ class CustomSolrFlexForm
     /**
      * @var string
      */
-    protected $path = 'FILE:EXT:searchmaster/Configuration/FlexForms/Results.xml';
+    protected $path = 'FILE:EXT:rkw_solrsearch/Configuration/FlexForms/Results.xml';
 
     /**
      * @return void

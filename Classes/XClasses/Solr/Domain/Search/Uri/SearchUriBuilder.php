@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\XClasses\Solr\Domain\Search\Uri;
+namespace RKW\RkwSolrsearch\XClasses\Solr\Domain\Search\Uri;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -27,7 +27,7 @@ use ApacheSolrForTypo3\Solr\Domain\Search\SearchRequest;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright RKW Kompetenzzentrum
- * @package Searchmaster
+ * @package RKW_RkwSolrsearch
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SearchUriBuilder extends \ApacheSolrForTypo3\Solr\Domain\Search\Uri\SearchUriBuilder

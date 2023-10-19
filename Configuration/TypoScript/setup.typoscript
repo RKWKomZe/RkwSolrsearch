@@ -8,7 +8,7 @@
 config.tx_extbase {
     objects {
         ApacheSolrForTypo3\Solr\Controller\AbstractBaseController {
-            className = FSL\Searchmaster\Controller\AbstractBaseController
+            className = RKW\RkwSolrsearch\Controller\AbstractBaseController
         }
     }
 }
@@ -18,13 +18,13 @@ plugin.tx_solr {
 
     view {
         templateRootPaths {
-            10 = EXT:searchmaster/Resources/Private/Templates/Solr/Templates/
+            10 = EXT:rkw_solrsearch/Resources/Private/Templates/Solr/Templates/
         }
         partialRootPaths {
-            10 = EXT:searchmaster/Resources/Private/Partials/Solr/Partials/
+            10 = EXT:rkw_solrsearch/Resources/Private/Partials/Solr/Partials/
         }
         layoutRootPaths {
-            10 = EXT:searchmaster/Resources/Private/Layouts/Solr/Layouts/
+            10 = EXT:rkw_solrsearch/Resources/Private/Layouts/Solr/Layouts/
         }
 
         templateFiles {
@@ -175,7 +175,7 @@ tx_solr_ajaxPage {
 page.includeJSFooterlibs {
     solr-uri = EXT:solr/Resources/Public/JavaScript/JQuery/URI.min.js
     solr-uri-jquery = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.URI.min.js
-    solr-ajaxify-searchmaster = EXT:searchmaster/Resources/Public/JavaScript/AjaxResults.js
+    solr-ajaxify-rkw_solrsearch = EXT:rkw_solrsearch/Resources/Public/JavaScript/AjaxResults.js
 }
 
 #===============================================================

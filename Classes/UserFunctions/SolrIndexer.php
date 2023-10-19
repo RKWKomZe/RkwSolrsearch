@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\UserFunctions;
+namespace RKW\RkwSolrsearch\UserFunctions;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -22,7 +22,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Maximilian Fäßler <maximilian@faesslerweb.de>
  * @copyright RKW Kompetenzzentrum
- * @package Searchmaster
+ * @package RKW_RkwSolrsearch
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class SolrIndexer

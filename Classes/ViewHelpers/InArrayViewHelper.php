@@ -1,5 +1,5 @@
 <?php
-namespace FSL\Searchmaster\ViewHelpers;
+namespace RKW\RkwSolrsearch\ViewHelpers;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,7 +19,7 @@ namespace FSL\Searchmaster\ViewHelpers;
  *
  * @author Christian Dilger <c.dilger@addorange.de>
  * @copyright RKW Kompetenzzentrum
- * @package Searchmaster
+ * @package RKW_RkwSolrsearch
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class InArrayViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper
