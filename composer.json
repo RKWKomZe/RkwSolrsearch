@@ -2,10 +2,18 @@
     "name": "rkw/rkw-solrsearch",
     "type": "typo3-cms-extension",
     "description": "Extension for website search. Primarily for TYPO3 SOLR.",
+    "homepage": "https://www.rkw-kompetenzzentrum.de",
+    "license": ["GPL-2.0+"],
+    "keywords": ["TYPO3 CMS", "RKW", "Solr"],
+    "support": {
+      "email": "c.dilger@addorange.de"
+    },
     "authors": [
         {
-            "name": "Maximilian F\u00e4\u00dfler",
-            "role": "Developer"
+          "name": "Maximilian Fäßler",
+          "email": "maximilian@faesslerweb.de",
+          "homepage": "https://www.faesslerweb.de",
+          "role": "Developer"
         },
         {
             "name": "Christian Dilger",
