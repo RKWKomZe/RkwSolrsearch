@@ -32,7 +32,7 @@ class AddFacetItemUniqueViewHelper extends \ApacheSolrForTypo3\Solr\ViewHelpers\
      * @return string
      * @throws \InvalidArgumentException
      */
-    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext)
+    public static function renderStatic(array $arguments, \Closure $renderChildrenClosure, RenderingContextInterface $renderingContext): string
     {
         /** @var  $resultSet SearchResultSet */
         $name = self::getNameFromArguments($arguments);

@@ -32,7 +32,7 @@ class CustomSolrFlexForm
     /**
      * @return void
      */
-    public function overwrite()
+    public function overwrite(): void
     {
         $GLOBALS['TCA']['tt_content']['columns']['pi_flexform']['config']['ds']['solr_pi_results,list']
             = $this->path;
