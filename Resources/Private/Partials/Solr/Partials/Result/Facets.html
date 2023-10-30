@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
 	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
-      xmlns:rkw_solrsearch="http://typo3.org/ns/RKW/RkwSolrsearch/ViewHelpers"   
+      xmlns:rkwSolrsearch="http://typo3.org/ns/RKW/RkwSolrsearch/ViewHelpers"   
       data-namespace-typo3-fluid="true"
 >
 
@@ -33,7 +33,7 @@
                         <s:facet.area.group groupName="main" facets="{resultSet.facets}">
                             <div class="solr-facets-available facets btn-list btn-list--center">
                                 <f:for each="{areaFacets}" as="facet">
-                                    <f:if condition="<rkw_solrsearch:inArray needle='{facet.name}' haystack='{settings.useFacets}' />">
+                                    <f:if condition="<rkwSolrsearch:inArray needle='{facet.name}' haystack='{settings.useFacets}' />">
                                         <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
                                     </f:if>
                                 </f:for>
