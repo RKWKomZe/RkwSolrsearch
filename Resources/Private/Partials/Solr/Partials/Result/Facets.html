@@ -9,24 +9,31 @@
     <div id="tx-solr-faceting" class="accordion accordion-filter center-main flex-basis-12">
         <div class="accordion__item">
             <div class="flex center-main">
-                <button
-                    id="searchfilter"
-                    class="accordion__button accordion-control" 
-                    name="accordion" 
-                    aria-controls="accordion-filter-content" 
-                    aria-expanded="false"
-                >
-                    <span class="accordion__title">
-                        <span class="accordion__title-icon"></span>
-                        Suche eingrenzen
-                    </span>
-                </button>
+                <f:if condition="{settings.showFacetsAlways}">
+                    <f:then>
+                    </f:then>
+                    <f:else>
+                        <button
+                            id="searchfilter"
+                            class="accordion__button accordion-control"
+                            name="accordion"
+                            aria-controls="accordion-filter-content"
+                            aria-expanded="false"
+                        >
+                        <span class="accordion__title">
+                            <span class="accordion__title-icon"></span>
+                            Suche eingrenzen
+                        </span>
+                        </button>
+                    </f:else>
+                </f:if>
                 <div 
                     class="accordion__item-content flex-basis-12" 
                     aria-hidden="true" 
                     id="accordion-filter-content" 
                     role="region" 
                     aria-labelledby="searchfilter"
+                    style="{f:if(condition: settings.showFacetsAlways, then: 'display: block;')}"
                 >
                     <div class="accordion__item-inner">
                         
