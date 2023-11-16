@@ -208,6 +208,16 @@
                             </config>
                         </TCEforms>
                     </settings.useFacets>
+                    <settings.showFacetsAlways>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>Always show facets</label>
+                            <config>
+                                <type>check</type>
+                                <default>0</default>
+                            </config>
+                        </TCEforms>
+                    </settings.showFacetsAlways>
                 </el>
             </ROOT>
         </sFacets>
