@@ -101,8 +101,12 @@
                                 <f:translate key='partials_solr_result_document.announcement' />
                             </f:then>
                             <f:else>
-                                <f:translate key='partials_solr_result_document.from' />
-                                <f:format.date format="d.m.Y">{document.fields.startDate_dateS}</f:format.date>
+                                <f:if condition="{f:format.date(date: document.fields.startDate_dateS, format: 'd')} == {f:format.date(date: document.fields.endDate_dateS, format: 'd')}">
+                                    <f:else>
+                                        <f:translate key='tx_rkwevents_fluid.partials_event_list_boxInner.from' extensionName='rkwEvents' />
+                                    </f:else>
+                                </f:if>
+                                {document.fields.startDate_dateS -> f:format.date(format:"d.m.Y")}
                             </f:else>
                         </f:if>
                     </div>
