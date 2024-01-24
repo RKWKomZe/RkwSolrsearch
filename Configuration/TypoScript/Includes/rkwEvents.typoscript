@@ -22,6 +22,9 @@ plugin.tx_solr {
 
         query {
 
+            # add fields to search in the index with appended boost factor
+            queryFields = eventCode_stringS^1.0
+
             // @toDo: add filter data to get only current and upcoming events? query.filter
             # https://stackoverflow.com/questions/12977389/how-to-filter-query-in-solr-by-date
             # Alternative (umständlicher): https://stichwort.org/typo3/extension/solr-in-typo3-alte-datensaetze-ausschliessen/
@@ -198,7 +201,7 @@ plugin.tx_solr {
 
                 //  set fields to trigger an update on index queueworker via scheduler, if changed
                 //  see https://docs.typo3.org/p/apache-solr-for-typo3/solr/main/en-us/Configuration/Reference/TxSolrIndex.html?highlight=recursiveupdatefield#queue-indexconfig-recursiveupdatefields
-                recursiveUpdateFields = title, start, end
+                recursiveUpdateFields = title, start, end, code
 
                 // @toDo: Checken, ob "additionalPageIds" mit "storagePid" ausreicht!
 
@@ -223,11 +226,6 @@ plugin.tx_solr {
                 fields {
 
                     # content
-                    abstract = subtitle
-                    description = description
-                    title = title
-                    tstamp = tstamp
-
                     // the special SOLR_CONTENT content object cleans HTML and RTE fields
                     content = SOLR_CONTENT
                     content {
@@ -239,6 +237,15 @@ plugin.tx_solr {
                                 noTrimWrap = || |
                             }
                         }
+                    }
+
+                    title = title
+                    description = description
+                    abstract = subtitle
+
+                    eventCode_stringS = TEXT
+                    eventCode_stringS {
+                        field = code
                     }
 
                     onlineEvent_intS = TEXT
