@@ -8,7 +8,7 @@
     <f:if condition="{resultSet.facets.used -> f:count()}">
         <f:then>
             <a href="{s:uri.facet.removeAllFacets()}" class="btn btn--link solr-ajaxified">
-                Alle Filter löschen
+                <f:translate key="partials_solr_search_facets.removeAllFilter" extensionName="RkwSolrsearch"/>
             </a>
         </f:then>
     </f:if>

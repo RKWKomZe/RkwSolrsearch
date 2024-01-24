@@ -37,7 +37,7 @@
             </trans-unit>
             <trans-unit id="partials_solr_search_form.searchInput.placeholder">
                 <source>Keyword ...</source>
-                <target>Suchbegriff ...</target>
+                <target>Suchbegriff eingeben...</target>
             </trans-unit>
 			<trans-unit id="partials_solr_search_form.searchInput.startSearch">
 				<source>Start search</source>
