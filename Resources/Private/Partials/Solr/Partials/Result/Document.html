@@ -98,7 +98,7 @@
                                 <svg class="icon icon--16" aria-hidden="true">
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-date-alarm"></use>
                                 </svg>
-                                <f:translate key='partials_solr_result_document.announcement' />
+                                <f:translate key='partials_solr_result_document.announcement' extensionName="RkwSolrsearch"/>
                             </f:then>
                             <f:else>
                                 <f:if condition="{f:format.date(date: document.fields.startDate_dateS, format: 'd')} == {f:format.date(date: document.fields.endDate_dateS, format: 'd')}">
@@ -116,7 +116,7 @@
                         </svg>
                         <f:if condition="{document.fields.onlineEvent_intS}">
                             <f:then>
-                                <f:translate key='partials_solr_result_document.online' />
+                                <f:translate key='partials_solr_result_document.online' extensionName="RkwSolrsearch"/>
                             </f:then>
                             <f:else>
                                 {document.fields.placeCity_stringM.0}

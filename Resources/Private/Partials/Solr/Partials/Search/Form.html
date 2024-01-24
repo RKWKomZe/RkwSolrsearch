@@ -14,7 +14,7 @@
             suggestHeader="{s:translate(key:'suggest_header',default:'Top Results')}"
         >
             <div class="searchform__title flex-basis-12">
-                <h1><f:translate key='partials_solr_search_form.searchHeader' /></h1>
+                <h1><f:translate key='partials_solr_search_form.searchHeader' extensionName="RkwSolrsearch"/></h1>
             </div>
             <div class="searchform__input">
                 <f:for each="{existingParameters}" key="name" as="value">
@@ -75,7 +75,7 @@
                     type="text"
                     class="single tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus"
                     aria-describedby="search"
-                    placeholder="Suchbegriff eingeben ..."
+                    placeholder="{f:translate(key: 'partials_solr_search_form.searchInput.placeholder', extensionName: 'RkwSolrsearch')}"
                     name="{pluginNamespace}[q]"
                     value="{q}"
                 />
@@ -84,7 +84,7 @@
                         <use xlink:href="#ic-arrow-primary"></use>
                     </svg>
                     <span>
-                        Suche starten
+                        <f:translate key='partials_solr_search_form.searchInput.startSearch' extensionName="RkwSolrsearch"/>
                     </span>
                 </button>
             </div>
