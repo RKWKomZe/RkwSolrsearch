@@ -17,13 +17,16 @@
                             id="searchfilter"
                             class="accordion__button accordion-control"
                             name="accordion"
+                            type="checkbox"
                             aria-controls="accordion-filter-content"
                             aria-expanded="false"
                         >
-                        <span class="accordion__title">
-                            <span class="accordion__title-icon"></span>
-                            <f:translate key='partials_solr_search_facets.useFilter' extensionName="RkwSolrsearch"/>
-                        </span>
+                            <svg class="icon accordion__icon">
+                                <use xlink:href="#ic-circle-close" />
+                            </svg>
+                            <span class="accordion__title">
+                                <f:translate key='partials_solr_search_facets.useFilter' extensionName="RkwSolrsearch"/>
+                            </span>
                         </button>
                     </f:else>
                 </f:if>
