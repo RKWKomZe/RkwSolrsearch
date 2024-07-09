@@ -70,6 +70,7 @@ plugin.tx_solr {
                     # test
                     keepAllOptionsOnSelection = 1
                     partialName = Select
+                    sortBy = title
                 }
 
                 # startDate in upcoming month(s)
