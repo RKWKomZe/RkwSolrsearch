@@ -39,28 +39,6 @@ plugin.tx_solr {
         }
     }
 
-    solr {
-
-        # The ability to use the legacy mode will be removed in EXT:solr 11.0. please configure your solr connections
-        # together with your TYPO3 site in the site module
-        solr {
-            #scheme = http
-            #host = 192.168.32.100
-            #host = localhost
-            #port = 8983
-            #path = /solr/#/core_de/
-        }
-        read {
-            #scheme = http
-            #host = 127.0.0.1
-            #host = 192.168.32.100
-            #host = localhost
-            #port = 8983
-            #path = /solr/#/core_de/
-        }
-        write < .read
-    }
-
     general {
         dateFormat.date = d.m.Y H:i
     }
@@ -173,7 +151,6 @@ tx_solr_ajaxPage {
 }
 
 page.includeJSFooterlibs {
-    solr-uri = EXT:solr/Resources/Public/JavaScript/JQuery/URI.min.js
     solr-uri-jquery = EXT:solr/Resources/Public/JavaScript/JQuery/jquery.URI.min.js
     solr-ajaxify-rkw_solrsearch = EXT:rkw_solrsearch/Resources/Public/JavaScript/AjaxResults.js
 }
