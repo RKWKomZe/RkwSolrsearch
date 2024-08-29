@@ -1,7 +1,7 @@
 plugin.tx_solr {
     index {
         queue {
-            pages = 0
+            pages = 1
             pages {
 
                 initialization = ApacheSolrForTypo3\Solr\IndexQueue\Initializer\Page

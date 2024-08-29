@@ -1,0 +1,13 @@
+plugin.tx_solr.search.faceting.facets {
+    # free of charge event yes / no
+    freeOfCharge {
+        label = Kostenlos
+        field = freeOfCharge_intS
+
+        # exclude 0. So only value 1 (=is freeOfCharge) can used as facet
+        excludeValues = 0
+        showEvenWhenEmpty = 1
+        type = bool
+        partialName = Checkbox
+    }
+}

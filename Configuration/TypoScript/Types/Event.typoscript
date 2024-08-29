@@ -1,0 +1,230 @@
+plugin.tx_solr {
+
+    # logger
+    logging.indexing.queue.rkw_events = 1
+
+    # queue
+    index {
+
+        fieldProcessingInstructions {
+            start = timestampToIsoDate
+            end = timestampToIsoDate
+        }
+
+        queue {
+            rkw_events = 1
+            rkw_events {
+
+                # re-index on title change
+                // @toDo: https://solr.apache.org/guide/8_0/reindexing.html
+
+                //  set fields to trigger an update on index queueworker via scheduler, if changed
+                //  see https://docs.typo3.org/p/apache-solr-for-typo3/solr/main/en-us/Configuration/Reference/TxSolrIndex.html?highlight=recursiveupdatefield#queue-indexconfig-recursiveupdatefields
+                recursiveUpdateFields = title, description, start, end, code, trainer
+
+                // @toDo: Checken, ob "additionalPageIds" mit "storagePid" ausreicht!
+
+                // @toDo: exclude old records
+                // additionalWhereClause = (end >= ' . time() . ' OR start = 0)
+
+                // @toDo: Maybe try to write an own indexer with additional enable-Fields als option?
+
+                // @toDo: Write own "GarbageCollector"?
+                // Hmmm: https://www.typo3-solr.com/solr-for-typo3/development-model/indexing/index-maintenance/
+
+
+                // @toDo NUR ZUM TESTEN!!
+               # additionalWhereClause = title LIKE '%test%'
+
+
+                additionalPageIds = {$plugin.tx_rkwevents.persistence.storagePid}
+                //  exclude events in "unternehmensnachfolge"
+                additionalWhereClause = pid NOT IN(8124)
+                table = tx_rkwevents_domain_model_event
+
+                fields {
+
+                    # content
+                    // the special SOLR_CONTENT content object cleans HTML and RTE fields
+                    content = SOLR_CONTENT
+                    content {
+                        cObject = COA
+                        cObject {
+                            10 = TEXT
+                            10 {
+                                field = description
+                                noTrimWrap = || |
+                            }
+                        }
+                    }
+
+                    title = title
+                    description = description
+                    abstract = subtitle
+
+                    eventCode_stringS = TEXT
+                    eventCode_stringS {
+                        field = code
+                    }
+
+                    trainer_stringS = TEXT
+                    trainer_stringS {
+                        field = trainer
+                    }
+
+                    onlineEvent_intS = TEXT
+                    onlineEvent_intS {
+                        field = online_event
+                    }
+
+                    costsReg_stringS = TEXT
+                    costsReg_stringS {
+                        field = costs_reg
+                    }
+
+                    freeOfCharge_intS = TEXT
+                    freeOfCharge_intS {
+                        value = 1
+                        if.value.field = costs_reg
+                        if.equals = 0.00
+                    }
+
+                    eligibility_intS = TEXT
+                    eligibility_intS {
+                        field = eligibility
+                    }
+
+                    additionalTileFlag_stringS = TEXT
+                    additionalTileFlag_stringS {
+                        field = additional_tile_flag
+                    }
+
+                    recordType_stringS = TEXT
+                    recordType_stringS {
+                        field = record_type
+                    }
+
+                    isAnnouncement_intS = TEXT
+                    isAnnouncement_intS {
+                        value = 1
+                        if.value.field = record_type
+                        if.equals = \RKW\RkwEvents\Domain\Model\EventAnnouncement
+                    }
+
+                    content_target_group = SOLR_CONTENT
+                    content_target_group {
+                        cObject = COA
+                        cObject {
+                            10 = TEXT
+                            10 {
+                                field = target_group
+                                noTrimWrap = || |
+                            }
+                        }
+                    }
+
+                    content_partner = SOLR_CONTENT
+                    content_partner {
+                        cObject = COA
+                        cObject {
+                            10 = TEXT
+                            10 {
+                                field = partner
+                                noTrimWrap = || |
+                            }
+                        }
+                    }
+
+                    # @toDo: Bessere Datumsberechnung? -> fieldProcessingInstructions (https://docs.typo3.org/p/apache-solr-for-typo3/solr/11.5/en-us/Configuration/Reference/TxSolrIndex.html#fieldprocessinginstructions)
+
+                    # dynamic fields (start and end date)
+                    startDate_dateS = TEXT
+                    startDate_dateS {
+                        field = start
+                        date = Y-m-d\TH:i:s\Z
+                        /*
+                        cObject = COA
+                        cObject {
+                            5 = TEXT
+                            5.field = start
+                            5.strftime = %d.%m.%Y
+                        }
+                        */
+                    }
+
+                    endDate_dateS = TEXT
+                    endDate_dateS {
+                        field = end
+                        date = Y-m-d\TH:i:s\Z
+                    }
+
+
+                    /*
+                     Vielleicht hilft das Beispiel, wenn alles Richtung EventSeries ausgelagert wird ("ingredients.ingredient.title"):
+                    https://github.com/TYPO3-Solr/ext-solr/issues/2743
+                    content = SOLR_CONTENT
+                    content {
+                    cObject = COA
+                    cObject {`
+                    120 = SOLR_RELATION
+                    120 {
+                    localField = recipe
+                    foreignLabelField = ingredients.ingredient.title
+                    }
+                    }
+                    */
+
+                    department_stringM = SOLR_RELATION
+                    department_stringM {
+                        localField = department
+                        multiValue = 0
+                    }
+
+                    documentType_stringM = SOLR_RELATION
+                    documentType_stringM {
+                        localField = document_type
+                        multiValue = 0
+                    }
+
+                    placeCity_stringM = SOLR_RELATION
+                    placeCity_stringM {
+                        localField = place
+                        foreignLabelField = city
+                        multiValue = 0
+                    }
+
+                    category_stringM = SOLR_RELATION
+                    category_stringM {
+                        localField = categories
+                        multiValue = 1
+                    }
+
+                    # the field "category_displayed" is not a real relation. Is simply a category uid select in TCA; and in FE converted by model typecast
+                    categoriesDisplayed_stringS = TEXT
+                    categoriesDisplayed_stringS {
+                        cObject = COA
+                        cObject {
+                            15 = USER
+                            15 {
+                                userFunc = RKW\RkwSolrsearch\UserFunctions\SolrIndexer->getCategoryDisplayed
+                            }
+                        }
+                    }
+
+                    # url
+                    url = TEXT
+                    url {
+                        typolink {
+                            parameter = {$plugin.tx_rkwevents.settings.showPid}
+                            additionalParams = &tx_rkwevents_pi1[controller]=Event&tx_rkwevents_pi1[action]=show&tx_rkwevents_pi1[event]={field:uid}
+                            additionalParams.insertData = 1
+                            useCacheHash = 1
+                            returnLast = url
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
