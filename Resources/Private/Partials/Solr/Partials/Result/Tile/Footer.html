@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+      data-namespace-typo3-fluid="true"
+>
+
+<f:comment><!-- EVENT --></f:comment>
+<f:section name="Event">
+
+    <div class="tile__contact-text">
+        <f:if condition="{document.fields.isAnnouncement_intS}">
+            <f:then>
+                <svg class="icon icon--16" aria-hidden="true">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-date-alarm"></use>
+                </svg>
+                <f:translate key='partials_solr_result_document.announcement' extensionName="RkwSolrsearch"/>
+            </f:then>
+            <f:else>
+                <f:if condition="{f:format.date(date: document.fields.startDate_dateS, format: 'd')} == {f:format.date(date: document.fields.endDate_dateS, format: 'd')}">
+                    <f:else>
+                        <f:translate key='tx_rkwevents_fluid.partials_event_list_boxInner.from' extensionName='rkwEvents' />
+                    </f:else>
+                </f:if>
+                {document.fields.startDate_dateS -> f:format.date(format:"d.m.Y")}
+            </f:else>
+        </f:if>
+    </div>
+    <div class="tile__contact-location" title="Ort">
+        <svg class="icon icon--16" aria-label="Ort">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-location"></use>
+        </svg>
+        <f:if condition="{document.fields.onlineEvent_intS}">
+            <f:then>
+                <f:translate key='partials_solr_result_document.online' extensionName="RkwSolrsearch"/>
+            </f:then>
+            <f:else>
+                {document.fields.placeCity_stringM.0}
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>
+
+
+<f:comment><!-- PAGES --></f:comment>
+<f:section name="Pages">
+
+
+    <div class="tile__contact-text">
+        <svg class="icon icon--16"><use xlink:href="#ic-date"></use></svg>
+        {document.created -> f:format.date(format:"d.m.Y")}
+    </div>
+
+    <div class="tile__footer-author">
+        <f:if condition="{document.author}">
+            von {document.author}
+        </f:if>
+    </div>
+
+
+
+</f:section>
+
+</html>

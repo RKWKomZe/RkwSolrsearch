@@ -39,6 +39,6 @@ page.includeJSFooterlibs {
 #===============================================================
 # Includes
 #===============================================================
-<INCLUDE_TYPOSCRIPT: source="DIR:./Config" extensions="typoscript">
 <INCLUDE_TYPOSCRIPT: source="DIR:./Types" extensions="typoscript">
 <INCLUDE_TYPOSCRIPT: source="DIR:./Facets" extensions="typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:./Config" extensions="typoscript">

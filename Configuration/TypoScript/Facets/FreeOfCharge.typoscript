@@ -1,4 +1,5 @@
 plugin.tx_solr.search.faceting.facets {
+
     # free of charge event yes / no
     freeOfCharge {
         label = Kostenlos

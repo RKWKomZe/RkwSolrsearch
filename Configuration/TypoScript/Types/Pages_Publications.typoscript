@@ -21,7 +21,12 @@ plugin.tx_solr {
 
                 // exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
 				excludeContentByClass = typo3-search-exclude
+
+
+                fields < plugin.tx_solr.index.queue.pages.fields
 				fields {
+
+                    /*
 					abstract = abstract
 					sortSubTitle_stringS = subtitle
 					description = tx_rkwbasics_teaser_text
@@ -71,6 +76,7 @@ plugin.tx_solr {
 						localField = tx_rkwprojects_project_uid
 						multiValue = 0
 					}
+					*/
 
 					# grouping facet
 					rkwgroups_stringS = TEXT

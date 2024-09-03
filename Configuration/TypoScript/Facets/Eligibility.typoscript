@@ -1,11 +1,15 @@
-# eligible event yes / no
-eligibility {
-    label = Förderfähig
-    field = eligibility_intS
+plugin.tx_solr.search.faceting.facets {
 
-    # exclude 0. So only value 1 (=is eligible) can used as facet
-    excludeValues = 0
-    showEvenWhenEmpty = 1
-    type = bool
-    partialName = Checkbox
+    # eligible event yes / no
+    eligibility {
+        label = Förderfähig
+        field = eligibility_intS
+
+        # exclude 0. So only value 1 (=is eligible) can used as facet
+        excludeValues = 0
+        showEvenWhenEmpty = 1
+        type = bool
+        partialName = Checkbox
+
+    }
 }

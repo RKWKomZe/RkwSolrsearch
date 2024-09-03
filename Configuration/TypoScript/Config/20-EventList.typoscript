@@ -42,6 +42,15 @@
                 sortBy = recordType_stringS desc, startDate_dateS asc
             }
 
+            faceting {
+
+                facets {
+                    # label override
+                    documentType {
+                        label = Veranstaltungsart
+                    }
+                }
+            }
         }
     }
 [END]

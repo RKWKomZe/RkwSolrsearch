@@ -158,6 +158,11 @@ plugin.tx_solr {
                         date = Y-m-d\TH:i:s\Z
                     }
 
+                    didacticDevice_stringS = TEXT
+                    didacticDevice_stringS {
+                        value = Veranstaltung
+                    }
+
 
                     /*
                      Vielleicht hilft das Beispiel, wenn alles Richtung EventSeries ausgelagert wird ("ingredients.ingredient.title"):

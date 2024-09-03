@@ -1,3 +1,6 @@
+
+// Should "authors" be a facet?
+
 plugin.tx_solr {
 
     # logger
@@ -10,7 +13,10 @@ plugin.tx_solr {
             rkw_authors {
 
                 additionalPageIds = {$plugin.tx_rkwauthors.persistence.storagePid}
-                table = tx_rkwauthors_domain_model_authors
+
+                # @toDo: Defines the type to index, which is usally the database table. Setting the record type via 'table' is deprecated and will be removed in v13, use 'type' instead.
+                #table = tx_rkwauthors_domain_model_authors
+                type = tx_rkwauthors_domain_model_authors
 
                 fields {
                     abstract = function_title
@@ -69,6 +75,7 @@ plugin.tx_solr {
                         }
                     }
 
+                    /*
                     image_stringS = FILES
                     image_stringS {
                         references {
@@ -83,6 +90,7 @@ plugin.tx_solr {
                             stdWrap.wrap = |
                         }
                     }
+                    */
 
                     /*
                     # !! there is no active relation to the department-Model. So we can't get the css_class !!
@@ -115,10 +123,12 @@ plugin.tx_solr {
                     }
 
                     # grouping facet
+                    /*
                     rkwgroups_stringS = TEXT
                     rkwgroups_stringS {
                         value = group_tx_rkwauthors_domain_model_authors
                     }
+                    */
 
                     # url
                     url = TEXT

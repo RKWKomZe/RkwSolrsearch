@@ -14,8 +14,10 @@ namespace RKW\RkwSolrsearch\UserFunctions;
  * The TYPO3 project - inspiring people to share!
  */
 
+use Doctrine\DBAL\Driver\Exception;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class SolrIndexer
@@ -66,6 +68,79 @@ class SolrIndexer
 
         // return empty string to avoid creating non-existing entries / facets
         return '';
+    }
+
+
+    /**
+     * Returns semicolon seperated string with author name (list)
+     *
+     * Maybe put this function into a new userFunc class for pages index function? ("PagesIndexer")
+     *
+     * @param $content
+     * @param $conf
+     * @return string
+     * @throws Exception
+     */
+    public function getAuthorNameMultiple($content, $conf): string
+    {
+        $record = $this->cObj->data;
+
+        $authorArray = [];
+
+        // ### PAGES (connected via MM-Table with authors) ###
+        if (!empty($record['tx_rkwauthors_authorship'])) {
+            $tableName = 'tx_rkwauthors_domain_model_authors';
+
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable($tableName)
+                ->createQueryBuilder();
+            $result = $queryBuilder
+                ->select(
+                    'authors.first_name',
+                    'authors.middle_name',
+                    'authors.last_name',
+                    'authors.title_before',
+                    'authors.title_after'
+                )
+                ->from($tableName, 'authors')
+                ->from('tx_rkwauthors_pages_authors_mm', 'mm_page_auth')
+                ->where(
+                    $queryBuilder->expr()->eq('mm_page_auth.uid_local', 11915),
+                    $queryBuilder->expr()->eq('authors.uid', 'mm_page_auth.uid_foreign')
+                )
+                ->execute();
+
+            while ($author = $result->fetchAssociative()) {
+
+                if (!$author['last_name']) {
+                    continue;
+                }
+
+                $name = $author['last_name'];
+
+                if ($author['middle_name']) {
+                    $name = $author['middle_name'] . ' ' . $name;
+                }
+
+                if ($author['first_name']) {
+                    $name = $author['first_name'] . ' ' . $name;
+                }
+
+                // @toDo: Use title_before and title_after?
+                if ($author['title_before']) {
+                    $name = $author['title_before'] . ' ' . $name;
+                }
+
+                if ($author['title_after']) {
+                    $name .= ', ' . $author['title_after'];
+                }
+
+                $authorArray[] = $name;
+            }
+        }
+
+        // return empty string to avoid creating non-existing entries / facets
+        return implode(';', $authorArray);
     }
 
 }

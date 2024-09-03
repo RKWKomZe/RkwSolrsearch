@@ -2,7 +2,7 @@ plugin.tx_solr.search.faceting.facets {
 
     # documentType select
     documentType {
-        label = Veranstaltungsart
+        label = Art
         field = documentType_stringM
         showEvenWhenEmpty = 1
         # test
