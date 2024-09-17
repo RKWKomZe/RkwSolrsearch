@@ -125,7 +125,20 @@
                     <span class="tile__title-icon">
                         <svg class="icon icon--36" aria-hidden="true">
                             <f:if condition="{document.type} == 'pages'">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-document"></use>
+                                <f:comment>
+                                    <!--
+                                    @toDo:
+                                    This string compare with "Blog-Beitrag" is wierd. But in near future we will have the {document.type} tx_news_domain_model_news
+                                    -->
+                                </f:comment>
+                                <f:if condition="{document.fields.documentType_stringM.0} == 'Blog-Beitrag'">
+                                    <f:then>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-clipboard"></use>
+                                    </f:then>
+                                    <f:else>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-document"></use>
+                                    </f:else>
+                                </f:if>
                             </f:if>
                             <f:if condition="{document.type} == 'tx_rkwevents_domain_model_event'">
                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-events"></use>

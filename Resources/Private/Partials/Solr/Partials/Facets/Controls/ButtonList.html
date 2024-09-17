@@ -11,7 +11,7 @@
             <f:if condition="{option.selected}">
                 <f:then>
                     <a
-                        class="btn btn--primary btn--small facet solr-ajaxified"
+                        class="btn btn--primary facet solr-ajaxified"
                         href="{s:uri.facet.removeFacetItem(facet: facet, facetItem: option)}"
                     >
                         {option.label} ({option.documentCount})
@@ -19,7 +19,7 @@
                 </f:then>
                 <f:else>
                     <a
-                        class="btn btn--outline btn--small facet solr-ajaxified"
+                        class="btn btn--outline facet solr-ajaxified"
                         href="{sm:uri.facet.addFacetItemUnique(facet: facet, facetItem: option)}"
                     >
                         {option.label} ({option.documentCount})
@@ -30,7 +30,7 @@
     </f:then>
     <f:else>
         <f:if condition="{facet.configuration.showEvenWhenEmpty}">
-            <div class="btn btn--disabled btn--small">
+            <div class="btn btn--disabled">
                 {option.label}
             </div>
         </f:if>

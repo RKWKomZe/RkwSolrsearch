@@ -10,6 +10,15 @@
 			</trans-unit>
 
 
+
+            <!-- ############################### -->
+            <!-- TEMPLATES -->
+            <!-- ############################### -->
+
+            <trans-unit id="templates_solr_search_sitesearchresults.noResults">
+                <source>Unfortunately we could not find any matching results for you. Please try again with similar terms.</source>
+                <target>Leider konnten wir keine passenden Ergebnisse für Sie finden. Versuchen Sie es bitte erneut mit ähnlichen Begriffen.</target>
+            </trans-unit>
             <trans-unit id="templates_solr_search_rkwevents.noResults">
                 <source>Unfortunately, we could not find any events for you.</source>
                 <target>Leider konnten wir keine Veranstaltungen für Sie finden.</target>
@@ -22,6 +31,10 @@
 
 
 
+            <!-- ############################### -->
+            <!-- PARTIALS -->
+            <!-- ############################### -->
+
             <trans-unit id="partials_solr_result_document.announcement">
                 <source>Announcement</source>
                 <target>Ankündigung</target>
@@ -30,6 +43,7 @@
                 <source>Online</source>
                 <target>Online</target>
             </trans-unit>
+
 
             <trans-unit id="partials_solr_search_form.searchHeader">
                 <source>What do you search for?</source>
@@ -43,6 +57,11 @@
 				<source>Start search</source>
 				<target>Suche starten</target>
 			</trans-unit>
+            <trans-unit id="partials_solr_search_form.placeholder">
+                <source>Here you will find your training, business solution or topic...</source>
+                <target>Hier finden Sie Ihre Weiterbildung, Unternehmenslösung oder Ihr Thema...</target>
+            </trans-unit>
+
 
 			<trans-unit id="partials_solr_search_facets.useFilter">
                 <source>Narrow search</source>

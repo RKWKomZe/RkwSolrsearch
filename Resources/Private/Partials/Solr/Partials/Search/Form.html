@@ -94,4 +94,52 @@
 
 </f:section>
 
+
+<f:section name="SiteSearch">
+
+    <div class="tx-solr-search-form">
+        <s:searchForm
+            id="tx-solr-search-form-pi-results"
+            class="searchform flex-container center-main"
+            additionalFilters="{additionalFilters}"
+            suggestHeader="{s:translate(key:'suggest_header', default:'Top Results')}"
+        >
+
+            <div class="searchform__input">
+                <f:for each="{existingParameters}" key="name" as="value">
+                    <f:form.hidden name="{pluginNamespace}{name}" value="{value}" />
+                </f:for>
+
+                <f:if condition="{addPageAndLanguageId}">
+                    <input type="hidden" name="L" value="{languageUid}" />
+                    <input type="hidden" name="id" value="{pageUid}" />
+                </f:if>
+
+                <div class="search-field">
+                    <svg class="icon icon--64"><use xlink:href="#ic-search" /></svg>
+                    <input
+                        id="search"
+                        type="text"
+                        class="tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus form-control"
+                        name="{pluginNamespace}[q]"
+                        value="{q}"
+                        placeholder="{f:translate(key: 'partials_solr_search_form.placeholder', extensionName: 'RkwSolrsearch')}"
+                    />
+
+
+                    <span class="input-group-btn">
+                        <button class="btn btn--white search-field__submit-standalone tx-solr-submit" type="submit">
+                            <span>
+                                <s:translate key="submit">Search</s:translate>
+                            </span>
+                        </button>
+                    </span>
+                </div>
+
+            </div>
+        </s:searchForm>
+    </div>
+
+</f:section>
+
 </html>

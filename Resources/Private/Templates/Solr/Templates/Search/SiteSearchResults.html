@@ -10,13 +10,17 @@
 
 <div class="tx_solr container main">
 
-    <div id="tx-solr-search-functions">
+    <div id="tx-solr-search-functions" class="pb-2">
 
         <f:render partial="Search/Form" section="FormSmall" arguments="{search:search, additionalFilters:additionalFilters, pluginNamespace: pluginNamespace, resultSet: resultSet}" />
 
         <f:if condition="{resultSet.hasSearched}">
-            <f:if condition="{resultSet.usedSearchRequest.contextTypoScriptConfiguration.searchFaceting}">
-                <f:render partial="Result/Facets" section="Facets" arguments="{_all}" />
+            <f:comment><!-- show facettes only if there is any result count --></f:comment>
+            <f:if condition="{resultSet.allResultCount}">
+                <f:if condition="{resultSet.usedSearchRequest.contextTypoScriptConfiguration.searchFaceting}">
+
+                    <f:render partial="Result/Facets" section="FacetsShowAlways" arguments="{_all}" />
+                </f:if>
             </f:if>
         </f:if>
 
@@ -39,10 +43,10 @@
                                     </f:for>
                                 </f:then>
                                 <f:else>
-                                    <div class="flex-container flex-basis-12 center-main solr-item-container">
+                                    <div class="flex-container flex-basis-12 center-main solr-item-container mt-3">
                                         <div class="no-results" role="alert">
                                             <p class="no-results__headline">
-                                                <f:translate key="templates_solr_search_rkwevents.noResults" extensionName="RkwSolrsearch"/>
+                                                <f:translate key="templates_solr_search_sitesearchresults.noResults" extensionName="RkwSolrsearch"/>
                                             </p>
                                         </div>
                                     </div>
