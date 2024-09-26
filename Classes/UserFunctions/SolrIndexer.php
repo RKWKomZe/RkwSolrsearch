@@ -141,6 +141,35 @@ class SolrIndexer
 
         // return empty string to avoid creating non-existing entries / facets
         return implode(';', $authorArray);
+
+    }
+
+    /**
+     * Returns comma separated string with the category titles associated with series
+     * @param $content
+     * @param $conf
+     * @return string
+     * @throws Exception
+     */
+    public function getCategoriesFromSeries($content, $conf): string
+    {
+        $record = $this->cObj->data;
+
+        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+        $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+        $eventSeriesRepository = $objectManager->get('RKW\RkwEvents\Domain\Repository\EventSeriesRepository');
+        $series = $eventSeriesRepository->findByUid((int)$record['series']);
+
+        $categories = [];
+        if ($series && $series->getCategories()) {
+            foreach ($series->getCategories() as $category) {
+                if ($category instanceof \TYPO3\CMS\Extbase\Domain\Model\Category) {
+                    $categories[] = $category->getTitle();
+                }
+            }
+        }
+
+        return implode(', ', $categories);
     }
 
 }

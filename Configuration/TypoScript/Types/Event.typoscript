@@ -58,7 +58,13 @@ plugin.tx_solr {
                         }
                     }
 
-                    title = title
+                    title_stringS = SOLR_RELATION
+                    title_stringS {
+                        localField = series
+                        foreignLabelField = title
+                        multiValue = 0
+                    }
+
                     description = description
                     abstract = subtitle
 
@@ -181,13 +187,15 @@ plugin.tx_solr {
 
                     department_stringM = SOLR_RELATION
                     department_stringM {
-                        localField = department
+                        localField = series
+                        foreignLabelField = department
                         multiValue = 0
                     }
 
                     documentType_stringM = SOLR_RELATION
                     documentType_stringM {
-                        localField = document_type
+                        localField = series
+                        foreignLabelField = document_type
                         multiValue = 0
                     }
 
@@ -198,10 +206,16 @@ plugin.tx_solr {
                         multiValue = 0
                     }
 
-                    category_stringM = SOLR_RELATION
+                    category_stringM = SOLR_MULTIVALUE
                     category_stringM {
-                        localField = categories
-                        multiValue = 1
+                        cObject = COA
+                        cObject {
+                            15 = USER
+                            15 {
+                                userFunc = RKW\RkwSolrsearch\UserFunctions\SolrIndexer->getCategoriesFromSeries
+                                multiValue = 1
+                            }
+                        }
                     }
 
                     # the field "category_displayed" is not a real relation. Is simply a category uid select in TCA; and in FE converted by model typecast
