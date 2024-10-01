@@ -48,6 +48,9 @@
             <trans-unit id="partials_solr_search_form.placeholder">
                 <source>Here you will find your training, business solution or topic...</source>
             </trans-unit>
+            <trans-unit id="partials_solr_search_form.button.label">
+                <source>Search</source>
+            </trans-unit>
 
 			<trans-unit id="partials_solr_search_facets.useFilter">
                 <source>Narrow search</source>

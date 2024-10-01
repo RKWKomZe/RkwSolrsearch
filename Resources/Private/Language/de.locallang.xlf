@@ -61,6 +61,10 @@
                 <source>Here you will find your training, business solution or topic...</source>
                 <target>Hier finden Sie Ihre Weiterbildung, Unternehmenslösung oder Ihr Thema...</target>
             </trans-unit>
+			<trans-unit id="partials_solr_search_form.button.label">
+				<source>Search</source>
+				<target>Suchen</target>
+			</trans-unit>
 
 
 			<trans-unit id="partials_solr_search_facets.useFilter">
