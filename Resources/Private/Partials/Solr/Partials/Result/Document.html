@@ -146,12 +146,12 @@
                         </svg>
                     </span>
                         <span class="tile__title-text">
-                        {document.fields.title_stringS}
+                        {document.fields.title}
                     </span>
                     </h3>
                     <div class="tile__text tile__text--no-img">
                         <p>
-                            {document.content -> f:format.crop(maxCharacters: 100)}
+                            {document.teaser -> f:format.crop(maxCharacters: 100)}
                         </p>
                         <f:comment>
                             {s:document.highlightResult(resultSet:resultSet, document:document, fieldName:'content')}
@@ -159,7 +159,6 @@
                     </div>
                 </div>
                 <div class="tile__footer tile__contact">
-
                     <f:if condition="{document.type} == 'pages'">
                         <f:render partial="Result/Tile/Footer" section="Pages" arguments="{resultSet:resultSet, document:document}" />
                     </f:if>

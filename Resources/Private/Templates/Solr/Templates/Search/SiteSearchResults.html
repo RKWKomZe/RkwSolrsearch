@@ -35,11 +35,22 @@
                             <f:if condition="<f:count>{documents}</f:count>">
                                 <f:then>
                                     <f:for each="{documents}" as="document">
-                                        <f:render
-                                            partial="Result/Document"
-                                            section="BoxCommon"
-                                            arguments="{resultSet:resultSet, document:document}"
-                                        />
+                                        <f:if condition="{document.type} == 'tx_rkwevents_domain_model_event'">
+                                            <f:then>
+                                                <f:render
+                                                    partial="Result/Document"
+                                                    section="BoxEvents"
+                                                    arguments="{resultSet:resultSet, document:document}"
+                                                />
+                                            </f:then>
+                                            <f:else>
+                                                <f:render
+                                                    partial="Result/Document"
+                                                    section="BoxCommon"
+                                                    arguments="{resultSet:resultSet, document:document}"
+                                                />
+                                            </f:else>
+                                        </f:if>
                                     </f:for>
                                 </f:then>
                                 <f:else>
