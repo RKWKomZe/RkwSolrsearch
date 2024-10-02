@@ -50,9 +50,11 @@ plugin.tx_solr {
                     content {
                         cObject = COA
                         cObject {
-                            10 = TEXT
+                            10 = SOLR_RELATION
                             10 {
-                                field = description
+                                localField = series
+                                foreignLabelField = description
+                                multiValue = 0
                                 noTrimWrap = || |
                             }
                         }
@@ -65,8 +67,12 @@ plugin.tx_solr {
                         multiValue = 0
                     }
 
-                    description = description
-                    abstract = subtitle
+                    abstract = SOLR_RELATION
+                    abstract {
+                        localField = series
+                        foreignLabelField = subtitle
+                        multivalue = 0
+                    }
 
                     eventCode_stringS = TEXT
                     eventCode_stringS {
@@ -121,9 +127,11 @@ plugin.tx_solr {
                     content_target_group {
                         cObject = COA
                         cObject {
-                            10 = TEXT
+                            10 = SOLR_RELATION
                             10 {
-                                field = target_group
+                                localField = series
+                                foreignLabelField = target_group
+                                multiValue = 0
                                 noTrimWrap = || |
                             }
                         }
@@ -133,9 +141,11 @@ plugin.tx_solr {
                     content_partner {
                         cObject = COA
                         cObject {
-                            10 = TEXT
+                            10 = SOLR_RELATION
                             10 {
-                                field = partner
+                                localField = series
+                                foreignLabelField = partner
+                                multiValue = 0
                                 noTrimWrap = || |
                             }
                         }
