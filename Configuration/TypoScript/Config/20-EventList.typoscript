@@ -1,0 +1,56 @@
+// Event list specific configuration
+[getTSFE().id == {$plugin.tx_rkwevents.settings.listPid}]
+    plugin.tx_solr {
+
+        view {
+            templateRootPaths {
+                20 = EXT:rkw_events/Resources/Private/Templates/Solr/Templates/
+            }
+            partialRootPaths {
+                20 = EXT:rkw_events/Resources/Private/Partials/Solr/Partials/
+            }
+            layoutRootPaths {
+                20 = EXT:rkw_events/Resources/Private/Layouts/Solr/Layouts/
+            }
+        }
+
+        search {
+
+            # ATM we do not provide some sorting
+            sorting = 0
+            sorting {
+                options >
+            }
+
+            query {
+
+                # add fields including default fields to search in the index with appended boost factor
+                queryFields = content^40.0, title_stringS^5.0, keywords^2.0, tagsH1^5.0, tagsH2H3^3.0, tagsH4H5H6^2.0, tagsInline^1.0, description^4.0, abstract^1.0, subtitle^1.0, navtitle^1.0, author^1.0, eventCode_stringS^1.0, trainer_stringS^1.0
+
+                // @toDo: add filter data to get only current and upcoming events? query.filter
+                # https://stackoverflow.com/questions/12977389/how-to-filter-query-in-solr-by-date
+                # Alternative (umständlicher): https://stichwort.org/typo3/extension/solr-in-typo3-alte-datensaetze-ausschliessen/
+                filter {
+                    specificType = type:tx_rkwevents_domain_model_event
+                    #specificTitle = title:Test
+                    // test with explicit dates always in solr format like "startDate_dateS:[2023-01-01T14:52:00Z TO 2023-12-30T14:52:00Z]"
+                    #startDateRange = startDate_dateS:[NOW/DAY TO *]
+                    dateFilter = endDate_dateS: [NOW/DAY TO *] OR isAnnouncement_intS: 1
+                }
+
+                # announcements to the end; all scheduled records ascending by start date
+                sortBy = recordType_stringS desc, startDate_dateS asc
+            }
+
+            faceting {
+
+                facets {
+                    # label override
+                    documentType {
+                        label = Veranstaltungsart
+                    }
+                }
+            }
+        }
+    }
+[END]
