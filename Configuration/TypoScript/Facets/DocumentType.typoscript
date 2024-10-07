@@ -1,0 +1,14 @@
+plugin.tx_solr.search.faceting.facets {
+
+    # documentType select
+    documentType {
+        label = Art
+        field = documentType_stringM
+        showEvenWhenEmpty = 1
+        # test
+        keepAllOptionsOnSelection = 1
+        partialName = Select
+        # infoLabel = Infolabel
+        # infoUid = 5429
+    }
+}

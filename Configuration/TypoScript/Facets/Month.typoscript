@@ -1,0 +1,82 @@
+plugin.tx_solr.search.faceting.facets {
+
+    # startDate in upcoming month(s)
+    month {
+        label = Monat
+        field = startDate_dateS
+        type = queryGroup
+        queryGroup {
+            0.query = [NOW/MONTH TO NOW/MONTH+1MONTHS]
+            1.query = [NOW/MONTH+1MONTHS TO NOW/MONTH+2MONTHS]
+            2.query = [NOW/MONTH+2MONTHS TO NOW/MONTH+3MONTHS]
+            3.query = [NOW/MONTH+3MONTHS TO NOW/MONTH+4MONTHS]
+            4.query = [NOW/MONTH+4MONTHS TO NOW/MONTH+5MONTHS]
+            5.query = [NOW/MONTH+5MONTHS TO NOW/MONTH+6MONTHS]
+            6.query = [NOW/MONTH+6MONTHS TO NOW/MONTH+7MONTHS]
+            7.query = [NOW/MONTH+7MONTHS TO NOW/MONTH+8MONTHS]
+            8.query = [NOW/MONTH+8MONTHS TO NOW/MONTH+9MONTHS]
+            9.query = [NOW/MONTH+9MONTHS TO NOW/MONTH+10MONTHS]
+            10.query = [NOW/MONTH+10MONTHS TO NOW/MONTH+11MONTHS]
+            11.query = [NOW/MONTH+11MONTHS TO NOW/MONTH+12MONTHS]
+            12.query = [NOW/MONTH+12MONTHS TO NOW/MONTH+13MONTHS]
+            13.query = [NOW/MONTH+13MONTHS TO NOW/MONTH+14MONTHS]
+            14.query = [NOW/MONTH+14MONTHS TO NOW/MONTH+15MONTHS]
+            15.query = [NOW/MONTH+15MONTHS TO NOW/MONTH+16MONTHS]
+            16.query = [NOW/MONTH+16MONTHS TO NOW/MONTH+17MONTHS]
+            17.query = [NOW/MONTH+17MONTHS TO NOW/MONTH+18MONTHS]
+            18.query = [NOW/MONTH+18MONTHS TO NOW/MONTH+19MONTHS]
+        }
+
+
+        renderingInstruction = CASE
+        renderingInstruction {
+            key.field = optionValue
+
+            default = TEXT
+            default.field = optionValue
+
+            0 = TEXT
+            0.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            1 = TEXT
+            1.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            2 = TEXT
+            2.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            3 = TEXT
+            3.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            4 = TEXT
+            4.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            5 = TEXT
+            5.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            6 = TEXT
+            6.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            7 = TEXT
+            7.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            8 = TEXT
+            8.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            9 = TEXT
+            9.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            10 = TEXT
+            10.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            11 = TEXT
+            11.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            12 = TEXT
+            12.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            13 = TEXT
+            13.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            14 = TEXT
+            14.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            15 = TEXT
+            15.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            16 = TEXT
+            16.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            17 = TEXT
+            17.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+            18 = TEXT
+            18.value.postUserFunc = RKW\RkwSolrsearch\UserFunctions\SolrFacets->getMonthName
+        }
+        showEvenWhenEmpty = 1
+        # test
+        keepAllOptionsOnSelection = 1
+        partialName = Select
+    }
+}

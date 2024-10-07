@@ -1,0 +1,13 @@
+plugin.tx_solr.search.faceting.facets {
+
+    # category select
+    category {
+        label = Kategorie
+        field = category_stringM
+        showEvenWhenEmpty = 1
+        # test
+        keepAllOptionsOnSelection = 1
+        partialName = Select
+        sortBy = title
+    }
+}

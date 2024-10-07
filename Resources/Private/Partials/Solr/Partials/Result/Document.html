@@ -92,37 +92,79 @@
                     </div>
                 </div>
                 <div class="tile__footer tile__contact">
-                    <div class="tile__contact-text">
-                        <f:if condition="{document.fields.isAnnouncement_intS}">
-                            <f:then>
-                                <svg class="icon icon--16" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-date-alarm"></use>
-                                </svg>
-                                <f:translate key='partials_solr_result_document.announcement' extensionName="RkwSolrsearch"/>
-                            </f:then>
-                            <f:else>
-                                <f:if condition="{f:format.date(date: document.fields.startDate_dateS, format: 'd')} == {f:format.date(date: document.fields.endDate_dateS, format: 'd')}">
+                    <f:render partial="Result/Tile/Footer" section="Event" arguments="{resultSet:resultSet, document:document}" />
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+</f:section>
+
+
+<f:section name="BoxCommon">
+
+    <div class="flex-item flex-basis-3">
+
+        <div class="tile tile--no-img">
+            <a title="{document.fields.title}" target="_blank" href="{s:uri.result.addSearchWordList(url:document.url, searchWords:resultSet.usedQuery.query)}">
+                <div class="tile__header">
+                    <div class="tile__label-wrapper">
+                        <span class="tile__label">
+                            {document.fields.documentType_stringM.0}
+                        </span>
+                        <f:if condition="{document.fields.additionalTileFlag_stringS}">
+                            <span class="tile__label tile__label--primary">
+                                {document.fields.additionalTileFlag_stringS}
+                            </span>
+                        </f:if>
+                    </div>
+                </div>
+                <div class="tile__content">
+                    <h3 class="tile__title icon">
+                    <span class="tile__title-icon">
+                        <svg class="icon icon--36" aria-hidden="true">
+                            <f:if condition="{document.type} == 'pages'">
+                                <f:comment>
+                                    <!--
+                                    @toDo:
+                                    This string compare with "Blog-Beitrag" is wierd. But in near future we will have the {document.type} tx_news_domain_model_news
+                                    -->
+                                </f:comment>
+                                <f:if condition="{document.fields.documentType_stringM.0} == 'Blog-Beitrag'">
+                                    <f:then>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-clipboard"></use>
+                                    </f:then>
                                     <f:else>
-                                        <f:translate key='tx_rkwevents_fluid.partials_event_list_boxInner.from' extensionName='rkwEvents' />
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-document"></use>
                                     </f:else>
                                 </f:if>
-                                {document.fields.startDate_dateS -> f:format.date(format:"d.m.Y")}
-                            </f:else>
-                        </f:if>
-                    </div>
-                    <div class="tile__contact-location" title="Ort">
-                        <svg class="icon icon--16" aria-label="Ort">
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-location"></use>
+                            </f:if>
+                            <f:if condition="{document.type} == 'tx_rkwevents_domain_model_event'">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ic-events"></use>
+                            </f:if>
                         </svg>
-                        <f:if condition="{document.fields.onlineEvent_intS}">
-                            <f:then>
-                                <f:translate key='partials_solr_result_document.online' extensionName="RkwSolrsearch"/>
-                            </f:then>
-                            <f:else>
-                                {document.fields.placeCity_stringM.0}
-                            </f:else>
-                        </f:if>
+                    </span>
+                        <span class="tile__title-text">
+                        {document.fields.title}
+                    </span>
+                    </h3>
+                    <div class="tile__text tile__text--no-img">
+                        <p>
+                            {document.teaser -> f:format.crop(maxCharacters: 100)}
+                        </p>
+                        <f:comment>
+                            {s:document.highlightResult(resultSet:resultSet, document:document, fieldName:'content')}
+                        </f:comment>
                     </div>
+                </div>
+                <div class="tile__footer tile__contact">
+                    <f:if condition="{document.type} == 'pages'">
+                        <f:render partial="Result/Tile/Footer" section="Pages" arguments="{resultSet:resultSet, document:document}" />
+                    </f:if>
+                    <f:if condition="{document.type} == 'tx_rkwevents_domain_model_event'">
+                        <f:render partial="Result/Tile/Footer" section="Event" arguments="{resultSet:resultSet, document:document}" />
+                    </f:if>
                 </div>
             </a>
         </div>

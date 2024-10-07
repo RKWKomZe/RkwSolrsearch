@@ -60,4 +60,46 @@
 
 </f:section>
 
+
+<f:section name="FacetsShowAlways">
+
+    <f:comment>
+        <!-- This section is equivalent to the upper one except that the flexform with property settings.showFacetsAlways is not needed -->
+        <!-- currently inline styles used to handle the original HTML-template behavior -->
+    </f:comment>
+
+    <div id="tx-solr-faceting" class="accordion accordion-filter center-main flex-basis-12">
+        <div class="accordion__item">
+            <div class="flex center-main">
+
+                <div
+                    class="accordion__item-content flex-basis-12"
+                    aria-hidden="true"
+                    id="accordion-filter-content"
+                    role="region"
+                    aria-labelledby="searchfilter"
+                    style="display: block;"
+                >
+                    <div class="accordion__item-inner">
+
+                        <s:facet.area.group groupName="main" facets="{resultSet.facets}">
+                            <div class="solr-facets-available facets btn-list btn-list--center">
+                                <f:for each="{areaFacets}" as="facet">
+                                    <f:if condition="<rkwSolrsearch:inArray needle='{facet.name}' haystack='{settings.useFacets}' />">
+                                        <f:render partial="Facets/Controls/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                        </s:facet.area.group>
+
+                        <f:render partial="Facets/Reset" section="Reset" arguments="{resultSet:resultSet}" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</f:section>
+
 </html>

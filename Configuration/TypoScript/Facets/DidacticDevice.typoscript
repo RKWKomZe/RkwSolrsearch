@@ -1,0 +1,13 @@
+plugin.tx_solr.search.faceting.facets {
+
+    # category select
+    didacticDevice {
+        label = Didaktisches Mittel
+        field = didacticDevice_stringS
+        showEvenWhenEmpty = 1
+        keepAllOptionsOnSelection = 1
+        partialName = ButtonList
+        sortBy = title
+        type = options
+    }
+}

@@ -1,7 +1,7 @@
 plugin.tx_solr {
     index {
         queue {
-            pages = 0
+            pages = 1
             pages {
 
                 initialization = ApacheSolrForTypo3\Solr\IndexQueue\Initializer\Page
@@ -46,8 +46,11 @@ plugin.tx_solr {
 
                 // exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
                 excludeContentByClass = typo3-search-exclude
+                */
 
                 fields {
+
+                    /*
                     abstract = abstract
                     sortSubTitle_stringS = subtitle
                     description = tx_rkwbasics_teaser_text
@@ -62,13 +65,24 @@ plugin.tx_solr {
                             }
                         }
                     }
+                    */
+
+
+
+                    authorsNames_stringM = SOLR_MULTIVALUE
+                    authorsNames_stringM {
+                        stdWrap.cObject = USER
+                        stdWrap.cObject.userFunc = RKW\RkwSolrsearch\UserFunctions\SolrIndexer->getAuthorNameMultiple
+                        removeEmptyValues = 1
+                        separator = ;
+                    }
+
 
                     # relations
-                    documenttype_stringM = SOLR_RELATION
-                    documenttype_stringM {
+                    documentType_stringM = SOLR_RELATION
+                    documentType_stringM {
                         localField = tx_rkwbasics_document_type
                         multiValue = 0
-
                     }
 
                     department_stringM = SOLR_RELATION
@@ -84,15 +98,23 @@ plugin.tx_solr {
                         multiValue = 0
                     }
 
-                    # grouping facet
+                    didacticDevice_stringS = SOLR_RELATION
+                    didacticDevice_stringS {
+                        localField = didactic_device
+                        multiValue = 1
+                    }
 
+
+                    /*
+                    # grouping facet
                     rkwgroups_stringS = TEXT
                     rkwgroups_stringS {
                         value = group_pages
                     }
+                    */
                 }
 
-                */
+
             }
         }
     }
