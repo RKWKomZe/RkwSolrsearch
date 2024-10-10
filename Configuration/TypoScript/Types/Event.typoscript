@@ -176,7 +176,7 @@ plugin.tx_solr {
 
                     didacticDevice_stringS = TEXT
                     didacticDevice_stringS {
-                        value = Veranstaltungen
+                        value = Veranstaltung
                     }
 
 
