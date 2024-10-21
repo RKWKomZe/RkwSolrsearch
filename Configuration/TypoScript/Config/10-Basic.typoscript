@@ -52,6 +52,12 @@ plugin.tx_solr {
         query {
             # this is important to get filter options, forms etc, even if the user makes an empty request
             allowEmptyQuery = 1
+            filter {
+                // filter old events also in general search
+                // the querystring "type: tx_rkwevents_domain_model_event AND" is logically not necessary but helps...
+                // ... to understand what happen here (that endDate and isAnnouncement relates explicit to events)
+                dateFilter = type: pages OR (type: tx_rkwevents_domain_model_event AND (endDate_dateS: [NOW/DAY TO *] OR isAnnouncement_intS: 1))
+            }
         }
 
         results {
