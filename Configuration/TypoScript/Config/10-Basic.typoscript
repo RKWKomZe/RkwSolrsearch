@@ -58,6 +58,34 @@ plugin.tx_solr {
                 // ... to understand what happen here (that endDate and isAnnouncement relates explicit to events)
                 dateFilter = type: pages OR (type: tx_rkwevents_domain_model_event AND (endDate_dateS: [NOW/DAY TO *] OR isAnnouncement_intS: 1))
             }
+
+            // ! this is a BAD solution. That kills better ways for relevance calculation with boostQuery and boostFunction !
+            #sortBy = recordType_stringS desc, startDate_dateS asc
+
+
+            // the function "sortBy" predominates other Stuff like boostQueries which have in consequence no real effect anymore
+            boostQuery {
+                #boostEvents = (type:tx_rkwevents_domain_model_event)^1
+            }
+
+
+            # boost pages with documentType_stringM:service
+            #boostFunction = termfreq(documentType_stringM,'Service')
+
+            #boostFunction = termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')
+
+
+            # more technical boost
+            # !! conflicts (in a logical way) with crappy "sortBy". Use only one of them !!
+            # @toDo: Not final. Does not considered that we have current events with endDate in future and a startDate in the past
+            # On the other hand: Events which are already running since a while should be less important.
+            # the "-2MONTH" addition is used because we can have active events (with endDate in future) which...
+            # ... have startDate already in the past. Calculate back in time to give them a higher ranking
+            boostFunction = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0)
+
+            # Example from documentation which gives new dates a higher prio (for newer blog entries e.g.)
+            #boostFunction = recip(ms(NOW,startDate_dateS),3.16e-11,1,1)
+
         }
 
         results {
