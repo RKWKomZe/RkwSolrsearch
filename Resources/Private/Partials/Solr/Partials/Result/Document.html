@@ -4,6 +4,13 @@
       data-namespace-typo3-fluid="true"
 >
 
+<f:comment>
+    <!--
+    Use following for showing relevance score (maybe create special solution for showing this always on local machine?)
+    {s:document.relevance(resultSet:resultSet, document:document)}
+    -->
+</f:comment>
+
 <f:section name="Document">
 
 	<div class="list-group-item search-result results-entry{f:if(condition:document.isElevated, then: ' results-elevated')}"
