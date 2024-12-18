@@ -68,20 +68,22 @@ plugin.tx_solr {
                 #boostEvents = (type:tx_rkwevents_domain_model_event)^1
             }
 
-
-            # boost pages with documentType_stringM:service
-            #boostFunction = termfreq(documentType_stringM,'Service')
-
-            #boostFunction = termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')
-
-
             # more technical boost
             # !! conflicts (in a logical way) with crappy "sortBy". Use only one of them !!
-            # @toDo: Not final. Does not considered that we have current events with endDate in future and a startDate in the past
-            # On the other hand: Events which are already running since a while should be less important.
             # the "-2MONTH" addition is used because we can have active events (with endDate in future) which...
             # ... have startDate already in the past. Calculate back in time to give them a higher ranking
-            boostFunction = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0)
+            # @toDo: Solve boosting for Event-Records with "boostQuery" instead of "boostFunction"?
+            boostFunction = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0) termfreq(documentType_stringM,'Blog-Beitrag')^3 termfreq(documentType_stringM,'Service')^8 termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')^10
+
+            # following lines does not work. The variable "boostFunction" seems only to allow simple strings
+            #boostFunction = TEXT
+            #boostFunction {
+            #    value = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0)
+            #    value := appendString( termfreq(documentType_stringM,'Blog-Beitrag')^0.1)
+            #    value := appendString( termfreq(documentType_stringM,'Service')^1)
+            #    value := appendString( termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')^10)
+            #}
+
 
             # Example from documentation which gives new dates a higher prio (for newer blog entries e.g.)
             #boostFunction = recip(ms(NOW,startDate_dateS),3.16e-11,1,1)
