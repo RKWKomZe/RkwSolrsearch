@@ -18,6 +18,7 @@ use Doctrine\DBAL\Driver\Exception;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use function PHPUnit\Framework\stringStartsWith;
 
 /**
  * Class SolrIndexer
@@ -170,6 +171,60 @@ class SolrIndexer
         }
 
         return implode(', ', $categories);
+    }
+
+
+    /**
+     * Returns string with document type title
+     *
+     * Allowed $conf-param "modify". Comma seperated string list to change words into something other
+     * Example: Seminar::Seminare,Banane::Apfel
+     *
+     * @param $content
+     * @param $conf
+     * @return string
+     */
+    public function getDocumentType($content, $conf): string
+    {
+        $modifyListArray = GeneralUtility::trimExplode(',', $conf['modify'], true);
+
+        $record = $this->cObj->data;
+
+        if (!empty($record['document_type'])) {
+            $tableName = 'tx_rkwbasics_domain_model_documenttype';
+
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable($tableName)
+                ->createQueryBuilder();
+            $result = $queryBuilder
+                ->select('name')
+                ->from($tableName)
+                ->where(
+                    $queryBuilder->expr()->eq('uid', $record['document_type'])
+                )
+                ->execute();
+
+            while ($row = $result->fetch()) {
+                if (isset($row['name'])) {
+
+                    // if a string modifier is given, use it.
+                    foreach ($modifyListArray as $modifyEntry) {
+                        $modifySplit = GeneralUtility::trimExplode('::', $modifyEntry);
+                        // match?
+                        if ($modifySplit[0] === $row['name']) {
+                            // modify
+                            return end($modifySplit);
+                        }
+                    }
+
+                    // otherwise, return default
+                    return $row['name'];
+                }
+            }
+        }
+
+        // return empty string to avoid creating non-existing entries / facets
+        return '';
     }
 
 }
