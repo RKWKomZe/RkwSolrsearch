@@ -17,8 +17,6 @@ namespace RKW\RkwSolrsearch\UserFunctions;
 use Doctrine\DBAL\Driver\Exception;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use function PHPUnit\Framework\stringStartsWith;
 
 /**
  * Class SolrIndexer
@@ -183,6 +181,7 @@ class SolrIndexer
      * @param $content
      * @param $conf
      * @return string
+     * @throws Exception
      */
     public function getDocumentType($content, $conf): string
     {
@@ -190,35 +189,42 @@ class SolrIndexer
 
         $record = $this->cObj->data;
 
-        if (!empty($record['document_type'])) {
-            $tableName = 'tx_rkwbasics_domain_model_documenttype';
+        if (!empty($record['series'])) {
+            $tableNameSeries = 'tx_rkwevents_domain_model_eventseries';
 
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-                ->getConnectionForTable($tableName)
+                ->getConnectionForTable($tableNameSeries)
                 ->createQueryBuilder();
+
             $result = $queryBuilder
-                ->select('name')
-                ->from($tableName)
-                ->where(
-                    $queryBuilder->expr()->eq('uid', $record['document_type'])
+                ->select('docTypeTable.name')
+                ->from($tableNameSeries, 'eventSeriesTable')
+                ->leftJoin(
+                    'eventSeriesTable',
+                    'tx_rkwbasics_domain_model_documenttype',
+                    'docTypeTable',
+                    $queryBuilder->expr()->andX(
+                        $queryBuilder->expr()->eq('eventSeriesTable.uid', $record['series']),
+                        $queryBuilder->expr()->eq('eventSeriesTable.document_type', 'docTypeTable.uid'),
+                    )
                 )
                 ->execute();
 
-            while ($row = $result->fetch()) {
-                if (isset($row['name'])) {
+            while ($documentType = $result->fetchAssociative()) {
+                if (isset($documentType['name'])) {
 
                     // if a string modifier is given, use it.
                     foreach ($modifyListArray as $modifyEntry) {
                         $modifySplit = GeneralUtility::trimExplode('::', $modifyEntry);
                         // match?
-                        if ($modifySplit[0] === $row['name']) {
+                        if ($modifySplit[0] === $documentType['name']) {
                             // modify
                             return end($modifySplit);
                         }
                     }
 
                     // otherwise, return default
-                    return $row['name'];
+                    return $documentType['name'];
                 }
             }
         }
