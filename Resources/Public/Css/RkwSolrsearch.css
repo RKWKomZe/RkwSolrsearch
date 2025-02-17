@@ -1,5 +1,6 @@
 .tx_solr .btn--link {
     color: #676767;
+    text-decoration: underline;
     border-color: transparent;
     text-transform: initial;
 }
@@ -13,26 +14,26 @@
 }
 
 .tx_solr .accordion-filter .select-field.select-field--info {
-    .tx_solr margin-right: 0;
+    margin-right: 0;
 }
 
 .tx_solr .accordion-filter .btn-list {
-    .tx_solr margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 @media only screen and (max-width: 48em) {
-    .tx_solr .tx_solr .accordion-filter .btn-list .select-field--info {
+    .tx_solr .accordion-filter .btn-list .select-field--info {
         width: calc(100% - 50px);
         margin-left: 0;
         margin-right: 0;
     }
-    .tx_solr .tx_solr .accordion-filter .btn.select-field__info {
+    .tx_solr .accordion-filter .btn.select-field__info {
         margin-right: 0;
     }
     .tx_solr .accordion-filter .select-field {
         margin-left: 0;
-        .tx_solr margin-right: 0;
-    }.tx_solr
+        margin-right: 0;
+    }
 }
 
 @media only screen and (max-width: 37.5em) {
