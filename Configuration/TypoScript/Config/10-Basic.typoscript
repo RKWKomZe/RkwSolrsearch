@@ -73,7 +73,7 @@ plugin.tx_solr {
             # the "-2MONTH" addition is used because we can have active events (with endDate in future) which...
             # ... have startDate already in the past. Calculate back in time to give them a higher ranking
             # @toDo: Solve boosting for Event-Records with "boostQuery" instead of "boostFunction"?
-            boostFunction = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0) termfreq(documentType_stringM,'Blog-Beitrag')^3 termfreq(documentType_stringM,'Service')^8 termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')^10
+            boostFunction = recip(abs(ms(NOW-2MONTH,startDate_dateS)),3.16e-11,1,0)^15 termfreq(documentType_stringM,'Blog-Beitrag')^3 termfreq(documentType_stringM,'Service')^8 termfreq(recordType_stringS,'\\RKW\\RkwEvents\\Domain\\Model\\EventScheduled')^10
 
             # following lines does not work. The variable "boostFunction" seems only to allow simple strings
             #boostFunction = TEXT
